@@ -57,7 +57,7 @@ export default function Pledge() {
   // otherwise
   return (
     <div className="text-black">
-      <h2 className="text-xl font-bold mb-6">Sign the pledge to tell Florida to buy Brightline — and run it the right way.</h2>
+      <h2 className="text-xl font-bold mb-6">Sign the pledge to tell Florida to make Brightline public — and run it the right way.</h2>
 
       <form onSubmit={submitForm.onSubmit((values) => handleSubmit(values))}>
 
