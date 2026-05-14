@@ -49,7 +49,7 @@ export default function Pledge() {
   return (
     <div className="text-black">
       <h2 className="text-xl font-bold mb-4">Thank you for signing!</h2>
-      <p className="text-lg leading-relaxed">We'll keep you updated on the campaign.</p>
+      <p className="text-lg leading-relaxed">We'll keep you updated on the campaign to make Brightline public.</p>
     </div>
   )
 }
@@ -57,7 +57,7 @@ export default function Pledge() {
   // otherwise
   return (
     <div className="text-black">
-      <h2 className="text-xl font-bold mb-6">Sign the pledge to tell Florida to make Brightline public — and run it the right way.</h2>
+      <h2 className="text-xl font-bold mb-6">Sign the pledge to tell Governor DeSantis, Senate President Albritton, House President Perez, and other Florida leaders, and candidates, to make Brightline public.</h2>
 
       <form onSubmit={submitForm.onSubmit((values) => handleSubmit(values))}>
 
