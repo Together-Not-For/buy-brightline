@@ -24,13 +24,13 @@ export default function Page() {
             Florida's only intercity railroad go out the same way.
           </p>
           <p className="mb-5 leading-relaxed text-lg">
-            Florida is sitting on $16 billion in reserves — a fraction of that
+            The State of Florida is sitting on $16 billion in reserves — a fraction of that
             could erase Brightline's debt and, for the first time, give the
             people who ride it a say in how it runs.
           </p>
           <p className="mb-5 leading-relaxed text-lg">
             We could have:<br />
-            🎟️ Discounted fares for Florida residents<br />
+            🎟️ Discounted tickets for Florida residents<br />
             📍 Connections built based on input from riders<br />
             💺 Seats that actually recline
           </p>
