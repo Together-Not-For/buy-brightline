@@ -2,39 +2,37 @@ import Link from 'next/link'
 
 const navItems = {
   '/': {
-    name: 'home',
+    name: 'pledge',
   },
-  '/blog': {
-    name: 'blog',
-  },
-  'https://vercel.com/templates/next.js/portfolio-starter-kit': {
-    name: 'deploy',
+  '/events': {
+    name: 'events',
   },
 }
 
 export function Navbar() {
   return (
-    <aside className="-ml-[8px] mb-16 tracking-tight">
-      <div className="lg:sticky lg:top-20">
-        <nav
-          className="flex flex-row items-start relative px-0 pb-0 fade md:overflow-auto scroll-pr-6 md:relative"
-          id="nav"
-        >
-          {/* <div className="flex flex-row space-x-0 pr-10">
-            {Object.entries(navItems).map(([path, { name }]) => {
-              return (
-                <Link
-                  key={path}
-                  href={path}
-                  className="transition-all hover:text-neutral-800 dark:hover:text-neutral-200 flex align-middle relative py-1 px-2 m-1"
-                >
-                  {name}
-                </Link>
-              )
-            })}
-          </div> */}
-        </nav>
-      </div>
+    <aside className="w-full bg-deepnavy sticky pb-2 pt-2 top-0 z-50">
+
+        {/* Nav Bar */}
+        <nav className="flex flex-row items-center h-14 px-8 lg:px-16" id="nav">
+
+        <Link href="/" className="flex items-center gap-2">
+          <span className="text-2xl">🚄</span>
+        </Link>
+
+        <div className="flex flex-row ml-auto">
+          {Object.entries(navItems).map(([path, { name }], i) => (
+            <Link
+              key={path}
+              href={path}
+              className="transition-all flex items-center py-2 px-4 m-1 rounded-md font-bold uppercase tracking-wide text-sm bg-coolyellow text-deepernavy"
+            >
+              {name}
+            </Link>
+          ))}
+        </div>
+
+      </nav>
     </aside>
   )
 }
