@@ -1,6 +1,7 @@
 import './global.css'
 import Pledge from './components/pledge'
 import type { Metadata } from 'next'
+import { DM_Serif_Display, DM_Sans, Barlow_Condensed } from 'next/font/google'
 import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
 import { Navbar } from './components/nav'
@@ -41,6 +42,23 @@ export const metadata: Metadata = {
 
 const cx = (...classes) => classes.filter(Boolean).join(' ')
 
+const dmSerif = DM_Serif_Display({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-serif',
+})
+
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  variable: '--font-sans',
+})
+
+const barlowCondensed = Barlow_Condensed({
+  subsets: ['latin'],
+  weight: ['700', '800', '900'],
+  variable: '--font-display',
+})
+
 export default function RootLayout({
   children,
 }: {
@@ -50,9 +68,10 @@ export default function RootLayout({
     <html
       lang="en"
       className={cx(
-        'text-brandtext',
+        'text-deepernavy',
+        GeistMono.variable,
         GeistSans.variable,
-        GeistMono.variable
+        barlowCondensed.variable
       )}
     >
       <body className="antialiased">

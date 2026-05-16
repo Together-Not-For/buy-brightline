@@ -3,6 +3,13 @@
 @theme {
   --color-brand: #fff7d9;
   --color-brandtext: #363534;
+  --color-deepnavy: #0a2342;
+  --color-coolyellow: #fef3c7;
+  --color-deepernavy: #111827;
+  --color-coral: #db432b;
+  --font-serif: var(--font-serif);
+  --font-sans: var(--font-sans);
+  --font-display: var(--font-display);
 }
 
 ::selection {

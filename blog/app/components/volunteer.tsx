@@ -6,14 +6,11 @@ import { useState } from "react";
 // type of pledge attributes
 interface FormValues {
   name: string;
-  email: string;
   phone: string;
-  zip: string;
   consent: boolean;
-  improvement: string;
 }
 
-export default function Pledge() {
+export default function Volunteer() {
   // set state of pledge form
   const [submitted, setSubmitted] = useState(false)
   
@@ -21,16 +18,13 @@ export default function Pledge() {
   const submitForm = useForm<FormValues>({
     initialValues: {
       name: "",
-      email: "",
-      zip: "",
       phone: "",
       consent: false,
-      improvement: ""
     },
   });
 
   const handleSubmit = async (values: FormValues): Promise<void> => {
-    const request = await fetch("/api/request_pledge_submit", {
+    const request = await fetch("/api/request_volunteer_submit", {
       method: "POST",
       body: JSON.stringify(values),
       headers: { "Content-Type": "application/json" },
@@ -40,7 +34,7 @@ export default function Pledge() {
 
     if (result.data == "ok") {
       setSubmitted(true);
-      submitForm.setValues({ name: "", email: "", zip: "", phone: "", consent: false, improvement: "" });
+      submitForm.setValues({ name: "", phone: "", consent: false });
     }
   };
 
@@ -48,8 +42,7 @@ export default function Pledge() {
   if (submitted) {
   return (
     <div className="text-deepnavy">
-      <h2 className="text-xl font-bold mb-4">Thank you for signing!</h2>
-      <p className="text-lg leading-relaxed">We'll keep you updated on the campaign to make Brightline public.</p>
+      <h2 className="text-xl font-bold mb-4">See you at the kick-off! 💛🚅 </h2>
     </div>
   )
 }
@@ -57,8 +50,7 @@ export default function Pledge() {
   // otherwise
   return (
     <div className="text-deepnavy">
-      <h2 className="text-xl font-bold mb-6 text-deepernavy">Brightline is going bankrupt. Let's buy it, and run it the right way. </h2>
-      <h3 className="text-l font-bold mb-6 text-deepernavy">Sign the pledge to tell Governor DeSantis, Senate President Albritton, House President Perez, and other Florida leaders, and candidates, to make Brightline public.</h3>
+      <h2 className="text-xl font-bold mb-6 text-deepernavy">Join us!</h2>
 
       <form onSubmit={submitForm.onSubmit((values) => handleSubmit(values))}>
 
@@ -73,22 +65,6 @@ export default function Pledge() {
             className="w-full border-2 border-deepnavy px-4 py-4 text-base placeholder-gray-400 focus:outline-none"
             {...submitForm.getInputProps("name")}
           />
-        </div>
-
-        {/* Email */}
-        <div className="mb-6">
-          <label className="block text-xs font-bold uppercase tracking-widest mb-2">
-            Email Address <span className="text-red-500">*</span>
-          </label>
-          <input
-            required
-            placeholder="you@example.com"
-            className="w-full border-2 border-deepnavy px-4 py-4 text-base placeholder-gray-400 focus:outline-none"
-            {...submitForm.getInputProps("email")}
-          />
-          <p className="text-xs text-gray-500 mt-2">
-            We won't spam. This is just to keep you in the loop!
-          </p>
         </div>
 
         {/* Phone */}
@@ -107,32 +83,6 @@ export default function Pledge() {
           </p>
         </div>
 
-        {/* Zip */}
-        <div className="mb-8">
-          <label className="block text-xs font-bold uppercase tracking-widest mb-2">
-            Zip Code <span className="text-red-500">*</span>
-          </label>
-          <input
-            required
-            placeholder="e.g. 33101"
-            className="w-full border-2 border-deepnavy px-4 py-4 text-base placeholder-gray-400 focus:outline-none"
-            {...submitForm.getInputProps("zip")}
-          />
-        </div>
-
-        {/* Improvement */}
-        <div className="mb-8">
-          <label className="block text-xs font-bold uppercase tracking-widest mb-2">
-            Brightline would be better if: <span className="text-red-500">*</span>
-          </label>
-          <input
-            required
-            placeholder="there was a section for kids to play"
-            className="w-full border-2 border-deepnavy px-4 py-4 text-base placeholder-gray-400 focus:outline-none"
-            {...submitForm.getInputProps("improvement")}
-          />
-        </div>
-
         {/* Consent */}
         <div className="mb-8 flex items-start gap-3">
           <input
@@ -142,7 +92,7 @@ export default function Pledge() {
             {...submitForm.getInputProps("consent", { type: "checkbox" })}
           />
           <label className="text-xs font-bold leading-relaxed">
-            By checking this box, you consent to receive email updates from the Buy Brightline campaign. Standard message and data rates may apply.
+            By checking this box, you consent to receive updates from the Buy Brightline campaign. Standard message and data rates may apply.
           </label>
         </div>
 
