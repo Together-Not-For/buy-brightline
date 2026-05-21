@@ -42,7 +42,7 @@ export default function Volunteer() {
   if (submitted) {
   return (
     <div className="text-deepnavy">
-      <h2 className="text-xl font-bold mb-4">See you at the kick-off! 💛🚅 </h2>
+      <h2 className="text-xl font-bold mb-4">See you there! 💛🚅 </h2>
     </div>
   )
 }

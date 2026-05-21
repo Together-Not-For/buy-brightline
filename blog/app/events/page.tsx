@@ -17,7 +17,7 @@ export default function EventsPage() {
         {/* Left: yellow panel */}
         <section className="lg:flex-1 bg-coolyellow text-deepnavy px-8 lg:px-16 pt-8 pb-8">
             <h1 className="font-display text-5xl font-black leading-none mb-8 text-deepnavy">
-              Campaign Kick-off
+              Weekly Campaign Call
             </h1>
             <div className="mb-5 leading-relaxed text-xl">
               <p>🗓️ Date: Wednesday, May 28th</p>
