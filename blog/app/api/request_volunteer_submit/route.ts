@@ -23,8 +23,8 @@ export async function POST(req: NextRequest) {
   )
 
   const result = await response.json()
-  // console.log('Airtable response status:', response.status)
-  // console.log('Airtable response body:', JSON.stringify(result))
+  console.log('Airtable response status:', response.status)
+  console.log('Airtable response body:', JSON.stringify(result))
 
   if (!response.ok) {
     return NextResponse.json({ data: 'error', detail: result }, { status: 500 })
