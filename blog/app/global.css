@@ -63,6 +63,10 @@ html {
   @apply underline transition-all decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em];
 }
 
+.prose a, section a, p a {
+  text-decoration: underline;
+}
+
 .prose .anchor:after {
   @apply text-neutral-300 dark:text-neutral-700;
   content: '#';

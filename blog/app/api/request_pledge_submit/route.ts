@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 
 export async function POST(req: NextRequest) {
   const body = await req.json()
-  const { name, email, zip, phone, consent, improvement } = body
+  const { name, email, zip, phone, consent1, consent2, consent3, improvement } = body
 
   const response = await fetch(
     `https://api.airtable.com/v0/${process.env.AIRTABLE_BASE_ID}/${process.env.AIRTABLE_TABLE_NAME}`,
@@ -18,7 +18,9 @@ export async function POST(req: NextRequest) {
           Email: email,
           "Zip Code": Number(zip),
           Phone: phone, 
-          Consent: consent,
+          "Consent1": consent1,
+          "Consent2": consent2,
+          "Consent3": consent3,
           Improvement: improvement
         },
       }),

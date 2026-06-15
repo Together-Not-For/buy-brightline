@@ -13,6 +13,8 @@ interface FormValues {
 export default function Volunteer() {
   // set state of pledge form
   const [submitted, setSubmitted] = useState(false)
+  // fix to stop multiple submissions
+  const [loading, setLoading] = useState(false)
   
   // set initial values of the pledge attributes
   const submitForm = useForm<FormValues>({
@@ -24,17 +26,23 @@ export default function Volunteer() {
   });
 
   const handleSubmit = async (values: FormValues): Promise<void> => {
-    const request = await fetch("/api/request_volunteer_submit", {
-      method: "POST",
-      body: JSON.stringify(values),
-      headers: { "Content-Type": "application/json" },
-    });
+    setLoading(true)
+    try {
+      const request = await fetch("/api/request_volunteer_submit", {
+        method: "POST",
+        body: JSON.stringify(values),
+        headers: { "Content-Type": "application/json" },
+      });
 
     const result = await request.json();
 
     if (result.data == "ok") {
       setSubmitted(true);
       submitForm.setValues({ name: "", phone: "", consent: false });
+    }
+
+    } finally {
+      setLoading(false)
     }
   };
 
@@ -99,9 +107,10 @@ export default function Volunteer() {
         {/* Submit */}
         <button
           type="submit"
-          className="w-full bg-[#0a2342] text-white text-sm font-bold uppercase tracking-widest py-4 hover:bg-gray-800 transition-colors mb-8"
+          disabled={loading}
+          className="w-full bg-[#0a2342] text-white text-sm font-bold uppercase tracking-widest py-4 hover:bg-gray-800 transition-colors mb-8 disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          Submit
+          {loading ? "Submitting..." : "Submit"}
         </button>
       </form>
     </div>
