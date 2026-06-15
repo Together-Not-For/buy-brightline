@@ -20,7 +20,7 @@ export default function EventsPage() {
               Weekly Campaign Call
             </h1>
             <div className="mb-5 leading-relaxed text-xl">
-              <p>🗓️ Date: Wednesday, June 10th</p>
+              <p>🗓️ Date: Wednesday, June 17th</p>
               <p className="mb-4">⏰ Time: 7:00pm</p>
               
               <p className="mb-4">Join us on Wednesday for our weekly campaign call! Drop in to get caught up on our efforts and help us refine our strategy to make Brightline public.</p>
