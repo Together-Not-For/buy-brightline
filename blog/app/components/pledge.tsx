@@ -135,7 +135,7 @@ export default function Pledge() {
         {/* Improvement */}
         <div className="mb-8">
           <label className="block text-xs font-bold uppercase tracking-widest mb-2">
-            Brightline would be better if: <span className="text-red-500">*</span>
+            How would your life change if Florida bought Brightline and expanded it statewide?: <span className="text-red-500">*</span>
           </label>
           {/* change to: If Brightline went bankrupt: */}
           <input
