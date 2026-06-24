@@ -42,7 +42,7 @@ export default function Page() {
           {/* Pledge counter bar */}
           <div className="bg-white border-b border-gray-200 px-10 py-5 flex items-center justify-between">
             <p className="text-2xl font-black text-deepnavy">
-              <span className="bg-deepnavy text-coolyellow px-2 py-1 mr-1">223</span>
+              <span className="bg-deepnavy text-coolyellow px-2 py-1 mr-1">239</span>
               {' '}pledges signed
               <span className="text-gray-400 font-normal text-lg ml-1">(and counting!)</span>
             </p>
