@@ -1,6 +1,17 @@
 import { Navbar } from '../components/nav'
 import Jobs from '../components/jobs'
 import { AnnouncementBanner } from '../components/announcements'
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "We're Hiring! | Buy Brightline",
+  description: "We're hiring two fellows to help us grow Buy Brightline's online presence.",
+  openGraph: {
+    title: "We're Hiring! | Buy Brightline",
+    description: "We're hiring two fellows to help us grow Buy Brightline's online presence.",
+    url: "https://www.buybrightline.com/jobs",
+  },
+};
 
 export default function JobsPage() {
   return (
