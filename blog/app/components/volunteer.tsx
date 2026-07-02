@@ -99,8 +99,8 @@ export default function Volunteer() {
             className="mt-1 w-5 h-5 border-2 border-black accent-brand"
             {...submitForm.getInputProps("consent", { type: "checkbox" })}
           />
-          <label className="text-xs font-bold leading-relaxed">
-            By checking this box, you consent to receive updates from the Buy Brightline campaign. Standard message and data rates may apply.
+          <label className="text-sm font-bold leading-relaxed">
+            I accept Buy Brightline's <a href="/sms-terms" className="underline underline-offset-2 hover:opacity-70 transition-opacity">Terms of Use</a> and <a href="/privacy-policy" className="underline underline-offset-2 hover:opacity-70 transition-opacity">Privacy Policy</a>. Reply STOP to opt out and Reply HELP for help.
           </label>
         </div>
 

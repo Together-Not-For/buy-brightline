@@ -7,7 +7,6 @@ import { useState } from "react";
 interface FormValues {
   name: string;
   email: string;
-  phone: string;
   role: string;
   resume: File | null;
 }
@@ -23,7 +22,6 @@ export default function Jobs() {
     initialValues: {
       name: '',
       email: '',
-      phone: '',
       role: '',
       resume: null,
     },
@@ -42,7 +40,7 @@ export default function Jobs() {
 
     if (result.data === "ok") {
       setSubmitted(true);
-      submitForm.setValues({ name: "", email: "", phone: "", role: "", resume: null});
+      submitForm.setValues({ name: "", email: "", role: "", resume: null});
     }
 
     } finally {
@@ -93,7 +91,7 @@ export default function Jobs() {
         </div>
 
         {/* Phone */}
-        <div className="mb-6">
+        {/* <div className="mb-6">
           <label className="block text-xs font-bold uppercase tracking-widest mb-2">
             Phone Number <span className="text-red-500">*</span>
           </label>
@@ -103,7 +101,7 @@ export default function Jobs() {
             className="w-full border-2 border-deepnavy px-4 py-4 text-base placeholder-gray-400 focus:outline-none"
             {...submitForm.getInputProps("phone")}
           />
-        </div>
+        </div> */}
 
         {/* Role */}
         <div className="mb-6">
