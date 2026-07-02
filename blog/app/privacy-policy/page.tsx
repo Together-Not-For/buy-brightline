@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     "Privacy policy for the Buy Brightline campaign and buybrightline.com.",
 };
 
-export default function JobsPage() {
+export default function PrivacyPolicy() {
   return (
     <div className="flex flex-col min-h-screen">
 

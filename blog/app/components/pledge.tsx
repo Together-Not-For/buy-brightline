@@ -150,7 +150,7 @@ export default function Pledge() {
           <input
             type="checkbox"
             required
-            className="border-2 border-black accent-brand"
+            className="mt-1 border-2 border-black accent-brand"
             {...submitForm.getInputProps("consent2", { type: "checkbox" })}
           />
           <label className="text-sm font-bold leading-relaxed">
@@ -163,7 +163,7 @@ export default function Pledge() {
           <input
             type="checkbox"
             required
-            className="border-2 border-black accent-brand"
+            className="mt-1 border-2 border-black accent-brand"
             {...submitForm.getInputProps("consent3", { type: "checkbox" })}
           />
           <label className="text-sm font-bold leading-relaxed">
@@ -176,11 +176,11 @@ export default function Pledge() {
           <input
             type="checkbox"
             required
-            className="border-2 border-black accent-brand"
+            className="mt-1 w-5 h-5 border-2 border-black accent-brand"
             {...submitForm.getInputProps("consent1", { type: "checkbox" })}
           />
           <label className="text-sm font-bold leading-relaxed">
-            I consent to receiving updates from the Buy Brightline campaign. Standard message and data rates may apply.
+            I accept Buy Brightline's <a href="/sms-terms" className="underline underline-offset-2 hover:opacity-70 transition-opacity">Terms of Use</a> and <a href="/privacy-policy" className="underline underline-offset-2 hover:opacity-70 transition-opacity">Privacy Policy</a>. Reply STOP to opt out and Reply HELP for help.
           </label>
         </div>
 

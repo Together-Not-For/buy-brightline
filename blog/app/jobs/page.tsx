@@ -32,7 +32,7 @@ export default function JobsPage() {
             </h1>
             <div className="mb-5 leading-relaxed text-xl">
               <h3>
-                We're looking for a Social Media Fellow and Graphic Design and Video Editing Fellow to help us build our campaign's online presence.
+                We're looking for a Social Media Fellow and Graphic Design and Video Editing Fellow to help us build our campaign's online presence. <b>Both roles are remote!</b>
               </h3>
             </div>
 
