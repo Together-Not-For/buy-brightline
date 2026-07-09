@@ -20,10 +20,11 @@ export default function EventsPage() {
               Weekly Campaign Call
             </h1>
             <div className="mb-5 leading-relaxed text-xl">
-              <p>🗓️ Date: Wednesday, June 24th</p>
-              <p className="mb-4">⏰ Time: 7:00pm</p>
+              <p>🗓️ Date: every Wednesday</p>
+              <p>⏰ Time: 7:00pm</p>
+              <p className="mb-4">📍 Location: Zoom</p>
               
-              <p className="mb-4">Join us on Wednesday for our weekly campaign call! Drop in to get caught up on our efforts and help us refine our strategy to make Brightline public.</p>
+              <p className="mb-4">Join us on Wednesday for our virtual weekly campaign call! Drop in to get caught up on our efforts and help us refine our strategy to make Brightline public.</p>
               
               <p className="mb-4">Brightline is on the verge of <a href='https://veronews.com/2026/05/14/substantial-doubt-brightline-can-stay-in-business/'>bankruptcy</a> — and that means Floridians finally have a shot at owning it. No more wealthy shareholders calling the shots. We could have cheaper fares, expanded routes, and a rail system we dream of and deserve.</p>
 

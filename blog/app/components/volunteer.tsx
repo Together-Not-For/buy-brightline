@@ -92,17 +92,23 @@ export default function Volunteer() {
         </div>
 
         {/* Consent */}
-        <div className="mb-8 flex items-start gap-3">
+        <div className="mb-2 flex items-start gap-3">
           <input
             type="checkbox"
             required
-            className="mt-1 w-5 h-5 border-2 border-black accent-brand"
+            className="mt-1 border-2 border-black accent-brand"
             {...submitForm.getInputProps("consent", { type: "checkbox" })}
           />
           <label className="text-sm font-bold leading-relaxed">
-            I accept Buy Brightline's <a href="/sms-terms" className="underline underline-offset-2 hover:opacity-70 transition-opacity">Terms of Use</a> and <a href="/privacy-policy" className="underline underline-offset-2 hover:opacity-70 transition-opacity">Privacy Policy</a>. Reply STOP to opt out and Reply HELP for help.
+            I agree to opt-in to text messages from the Buy Brightline campaign.
           </label>
         </div>
+
+        {/* SMS disclaimer */}
+        <p className="text-xs text-gray-500 leading-relaxed mb-8">
+          By providing your phone number and checking the box above, you consent to receive recurring SMS/MMS messages from the Buy Brightline campaign, including updates, alerts, and calls to action. Message and data rates may apply. Message frequency may vary. Text STOP to opt out at any time. Text HELP for help. Your information will not be rented, sold, or shared.{' '}
+          <a href="/privacy-policy" className="underline decoration-dotted">Privacy Policy</a>. <a href="/sms-terms" className="underline decoration-dotted">Terms and conditions</a>.
+        </p>
 
         {/* Submit */}
         <button
