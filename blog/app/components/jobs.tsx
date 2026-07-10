@@ -28,27 +28,41 @@ export default function Jobs() {
   });
 
   const handleSubmit = async (values: FormValues): Promise<void> => {
-    setLoading(true)
-    try {
-      const request = await fetch("/api/request_jobs_submit", {
-        method: "POST",
-        body: JSON.stringify(values),
-        headers: { "Content-Type": "application/json" },
-      });
-
-    const result = await request.json();
-
-    if (result.data === "ok") {
-      setSubmitted(true);
-      submitForm.setValues({ name: "", email: "", role: "", resume: null});
+  setLoading(true)
+  try {
+    const formData = new FormData()
+    formData.append('name', values.name)
+    formData.append('email', values.email)
+    formData.append('role', values.role)
+    if (values.resume) {
+      formData.append('resume', values.resume)
     }
 
+    const request = await fetch("/api/request_jobs_submit", {
+        method: "POST",
+        body: formData,
+      });
+
+      let result
+      try {
+        result = await request.json()
+      } catch {
+        console.error('Response was not JSON. Status:', request.status)
+        return
+      }
+
+      if (result.data === "ok") {
+        setSubmitted(true);
+        submitForm.setValues({ name: "", email: "", role: "", resume: null });
+      } else {
+        console.error('Submission failed:', result)
+      }
     } finally {
       setLoading(false)
     }
-  };
+  }
 
-  // if pledge successfully sent
+  // if application successfully sent
   if (submitted) {
   return (
     <div className="text-deepnavy">
@@ -115,14 +129,14 @@ export default function Jobs() {
           >
             <option value="">Which role are you applying for?</option>
             <option value="Social Media Fellow">Social Media Fellow</option>
-            <option value="Graphic Design & Video Editing Fellow">Graphic Design & Video Editing Fellow</option>
+            <option value="Graphic Design and Video Editing Fellow">Graphic Design and Video Editing Fellow</option>
           </select>
         </div>
 
-        {/* Resume or Portfolio */}
+        {/* Resume */}
         <div className="mb-6">
         <label className="block text-xs font-bold uppercase tracking-widest mb-2">
-          Resumé or Portfolio <span className="text-red-500">*</span>
+          Resumé<span className="text-red-500">*</span>
         </label>
         <input
           required
