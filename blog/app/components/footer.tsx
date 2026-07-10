@@ -1,61 +1,58 @@
-function ArrowIcon() {
-  return (
-    <svg
-      width="12"
-      height="12"
-      viewBox="0 0 12 12"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M2.07102 11.3494L0.963068 10.2415L9.2017 1.98864H2.83807L2.85227 0.454545H11.8438V9.46023H10.2955L10.3097 3.09659L2.07102 11.3494Z"
-        fill="currentColor"
-      />
-    </svg>
-  )
-}
+// components/footer.tsx
+'use client';
 
-export default function Footer() {
+import { useState } from 'react';
+
+export function Footer() {
+  const [open, setOpen] = useState(true);
+
   return (
-    <footer className="mb-16">
-      <ul className="font-sm mt-8 flex flex-col space-x-0 space-y-2 text-neutral-600 md:flex-row md:space-x-4 md:space-y-0 dark:text-neutral-300">
-        <li>
-          <a
-            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
-            rel="noopener noreferrer"
-            target="_blank"
-            href="/rss"
-          >
-            <ArrowIcon />
-            <p className="ml-2 h-7">rss</p>
+    <footer className="bg-deepnavy">
+
+      {/* Main footer */}
+      <div className="max-w-5xl mx-auto px-8 py-4 flex flex-col lg:flex-row items-center justify-between gap-8">
+
+        {/* Left: branding */}
+        <div>
+          <p className="font-display text-2xl font-black uppercase text-coolyellow mb-1">
+            Buy Brightline
+          </p>
+          <p className="text-sm text-white/60 mb-4">
+            A grassroots campaign to buy Brightline and make it public.
+          </p>
+          {/* <p className="text-xs font-bold uppercase tracking-widest text-white/40">
+            Paid for by Buy Brightline
+          </p> */}
+        </div>
+
+        {/* Right: contact + socials */}
+        <div className="text-sm text-white/70 flex flex-col gap-3 lg:items-end">
+          
+          <a href="mailto:hello@buybrightline.com"
+            className="underline decoration-dotted hover:text-white transition-colors">
+            hello@buybrightline.com
           </a>
-        </li>
-        <li>
-          <a
-            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
-            rel="noopener noreferrer"
-            target="_blank"
-            href="https://github.com/vercel/next.js"
-          >
-            <ArrowIcon />
-            <p className="ml-2 h-7">github</p>
-          </a>
-        </li>
-        <li>
-          <a
-            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
-            rel="noopener noreferrer"
-            target="_blank"
-            href="https://vercel.com/templates/next.js/portfolio-starter-kit"
-          >
-            <ArrowIcon />
-            <p className="ml-2 h-7">view source</p>
-          </a>
-        </li>
-      </ul>
-      <p className="mt-8 text-neutral-600 dark:text-neutral-300">
-        © {new Date().getFullYear()} MIT Licensed
-      </p>
+          {/* <div className="flex gap-4 text-xs font-bold uppercase tracking-widest text-white/50">
+            <a href="https://facebook.com/buybrightline" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Facebook</a>
+            <a href="https://instagram.com/buybrightline" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Instagram</a>
+            <a href="https://twitter.com/buybrightline" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">X</a>
+            <a href="https://tiktok.com/@buybrightline" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">TikTok</a>
+          </div> */}
+        </div>
+      </div>
+
+      {/* Disclaimer */}
+      <div className="border-t border-white/10">
+        <div className="max-w-5xl mx-auto px-8 py-6">
+
+          <span className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-white/40 hover:text-white/60 transition-colors mb-3">Legal Disclaimer</span>
+          <p className="text-xs text-white/40 leading-relaxed max-w-4xl">
+              This website and campaign are independent advocacy efforts and are not affiliated with, sponsored by, endorsed by, authorized by, or associated with Brightline Holdings LLC, Brightline Trains Florida LLC, or any Brightline affiliate. All references to Brightline are for identification and discussion purposes only. Contributions made through this website are not made to, received by, or used for the benefit of Brightline. Funds are received solely by the sponsoring organization for advocacy, educational, and political activities.
+          </p>
+
+        </div>
+      </div>
+
     </footer>
-  )
+  );
 }

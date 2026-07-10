@@ -3,6 +3,7 @@ import Pledge from './components/pledge'
 import { AnnouncementBanner } from './components/announcements'
 import { TestimonialsSection } from './components/testimonials'
 import { FAQSection } from './components/faq'
+import { Footer } from './components/footer'
 
 export default function Page() {
   return (
@@ -62,6 +63,9 @@ export default function Page() {
 
       {/* FAQ */}
       <FAQSection/>
+
+    {/* Footer */}
+    <Footer />
     </div>
   )
 }
