@@ -9,7 +9,7 @@ export function AnnouncementBanner() {
   return (
     <div className="w-full bg-white px-8 py-3 flex items-center justify-center relative sticky border-b-2 border-deepernavy">
       <p className="text-deepnavy text-sm font-semibold text-center">
-        Join us on Wednesdays for our weekly campaign call!{" "}
+        Join us on October 7 for our campaign call!{" "}
         <a href="/events" className="underline underline-offset-2 hover:opacity-70 transition-opacity">
           RSVP here
         </a>
