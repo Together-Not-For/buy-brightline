@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, type FormEvent } from 'react'
-import { upcomingEvents } from '../events/events.tsx'
+import { upcomingEvents } from '../events/events'
 
 export default function EventSignup() {
   const [selected, setSelected] = useState<string[]>(upcomingEvents.map((e) => e.id))
