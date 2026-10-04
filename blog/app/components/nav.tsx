@@ -7,9 +7,9 @@ const navItems = {
   '/events': {
     name: 'events',
   },
-  '/jobs': {
-    name: 'jobs',
-  },
+  // '/jobs': {
+  //   name: 'jobs',
+  // },
 }
 
 export function Navbar() {
