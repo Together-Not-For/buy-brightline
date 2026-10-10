@@ -18,11 +18,11 @@ export const upcomingEvents: UpcomingEvent[] = [
     time: '7:00pm',
     location: 'Zoom',
     description:
-      "Drop in to our weeklyn campaign call, where we share updates and work together on specific tasks.",
+      "Drop in to our weekly campaign call. All are welcome. No campaign experience is needed. We just need people like you who are willing to dream and put in the work to make Brightline public. Bring a friend (or make a new one)!",
   },
   {
     id: 'all-hands-2026-10-16',
-    title: 'Meeting with Rep. Spencer's Office',
+    title: "Meeting with State Rep. Spencer's Office",
     dayLabel: 'Friday, October 16',
     shortDate: 'Fri, Oct 16',
     time: '2:00pm',
