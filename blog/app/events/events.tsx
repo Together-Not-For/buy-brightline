@@ -26,7 +26,7 @@ export const upcomingEvents: UpcomingEvent[] = [
     dayLabel: 'Friday, October 16',
     shortDate: 'Fri, Oct 16',
     time: '2:00pm',
-    location: 'TBD',
+    location: '12200 West Colonial Drive Suite 300H Winter Garden, FL 34787',
     description:
       "We're meeting with the office of State Representative Leonard Spencer about supporting our Buy Brightline campaign. There's strength in numbers, so please come and help show our campaign has real support.",
   },
