@@ -135,11 +135,10 @@ export default function Pledge() {
         {/* Improvement */}
         <div className="mb-8">
           <label className="block text-xs font-bold uppercase tracking-widest mb-2">
-            How would your life change if Florida bought Brightline and expanded it statewide?: <span className="text-red-500">*</span>
+            The State of Florida should buy Brightline because: <span className="text-red-500">*</span>
           </label>
-          {/* change to: If Brightline went bankrupt: */}
           <input
-            placeholder="there was a section for kids to play"
+            placeholder="A public train, with cheaper rates, would make life better. I could see family more often, and skip wasting time and gas sitting in traffic"
             className="w-full border-2 border-deepnavy px-4 py-4 text-base placeholder-gray-400 focus:outline-none"
             {...submitForm.getInputProps("improvement")}
           />
