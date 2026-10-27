@@ -11,22 +11,22 @@ export type UpcomingEvent = {
 // Listed in date order. Edit these, and the left column and sign-up card both update.
 export const upcomingEvents: UpcomingEvent[] = [
   {
-    id: 'meeting-2026-10-14',
-    title: "Weekly Campaign Call",
-    dayLabel: 'Wednesday, October 14',
-    shortDate: 'Wed, Oct 14',
-    time: '7:00pm',
+    id: 'meeting-2026-10-28',
+    title: "Meeting with State Rep. Franklin",
+    dayLabel: 'Wednesday, October 28',
+    shortDate: 'Wed, Oct 28',
+    time: '1:30pm',
     location: 'Zoom',
     description:
-      "Drop in to our weekly campaign call. All are welcome. No campaign experience is needed. We just need people like you who are willing to dream and put in the work to make Brightline public. Bring a friend (or make a new one)!",
+      "We're meeting with State Representative Gallop Franklin about our campaign to buy Brightline's debt with our tax dollars. There's strength in numbers, so please come and help show our campaign has real support.",
   },
   {
-    id: 'all-hands-2026-10-16',
-    title: "Meeting with State Rep. Spencer's Office",
-    dayLabel: 'Friday, October 16',
-    shortDate: 'Fri, Oct 16',
-    time: '2:00pm',
-    location: '12200 West Colonial Drive Suite 300H Winter Garden, FL 34787',
+    id: 'weekly-2026-10-28',
+    title: 'Weekly Campaign Call',
+    dayLabel: 'Wednesday, October 28',
+    shortDate: 'Wed, Oct 28',
+    time: '7:00pm',
+    location: 'Zoom',
     description:
       "We're meeting with the office of State Representative Leonard Spencer about supporting our Buy Brightline campaign. There's strength in numbers, so please come and help show our campaign has real support.",
   },
