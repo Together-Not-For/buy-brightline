@@ -69,7 +69,7 @@ export default function EventsPage() {
           <div className="max-w-2xl mx-auto">
             <h1 className="font-display text-5xl font-black leading-none mb-6">Upcoming Events</h1>
             <p className="text-xl leading-relaxed mb-4">
-              Two ways to plug in this week. Come to one or both, and bring a friend (or make a new one)!
+              Ways to plug into the campaign:
             </p>
             <a
               href="#signup"

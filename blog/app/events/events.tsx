@@ -28,6 +28,6 @@ export const upcomingEvents: UpcomingEvent[] = [
     time: '7:00pm',
     location: 'Zoom',
     description:
-      'Drop in to learn more about the campaign and how you can join us to make Brightline public. All are welcome. No campaign experience is needed. We just need people like you who are willing to dream and put in the work to make Brightline public. Bring a friend (or make a new one)!',
+      "We're meeting with the office of State Representative Leonard Spencer about supporting our Buy Brightline campaign. There's strength in numbers, so please come and help show our campaign has real support.",
   },
 ];
