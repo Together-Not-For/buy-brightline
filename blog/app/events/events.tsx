@@ -21,6 +21,16 @@ export const upcomingEvents: UpcomingEvent[] = [
   //     "We're meeting with State Representative Gallop Franklin about our campaign to buy Brightline's debt with our tax dollars. There's strength in numbers, so please come and help show our campaign has real support.",
   // },
   {
+    id: 'weekly-2026-10-31',
+    title: 'Walk + Talk',
+    dayLabel: 'Friday, October 31',
+    shortDate: 'Fri, Oct 31',
+    time: '9:30am',
+    location: 'Tampa',
+    description:
+      "We're knocking doors with Transit Now Tampa Bay to spread the word about our campaign and help elect Hillsborough County Commission candidates that support public transit! No experience needed.",
+  },
+  {
     id: 'weekly-2026-11-04',
     title: 'Weekly Campaign Call',
     dayLabel: 'Wednesday, November 4',
