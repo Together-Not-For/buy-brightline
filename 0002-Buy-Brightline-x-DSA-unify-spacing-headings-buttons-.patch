@@ -1,0 +1,628 @@
+From 0c7c2195898e8dca36f333e3add3c3b525010550 Mon Sep 17 00:00:00 2001
+From: Benji Charles <charles.benji33@gmail.com>
+Date: Fri, 30 Oct 2026 22:00:26 -0400
+Subject: [PATCH] Buy Brightline x DSA: unify spacing, headings, buttons and
+ flow
+
+- One section rhythm and fluid side gutters (bb-sec, bb-wrap, bb-gutter)
+- One section-title style (bb-h2) and one orange pill button (bb-pill)
+- Hero sized to the screen
+- Upcoming events strip on the landing page, swipeable on phones
+- Testimonials swipe on phones, arrows on desktop
+- Closing We need you! banner; slim footer
+- Shared 28px corner radius on cards and images
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01HtisU6XdgEXpAv646VhqJ8
+---
+ blog/app/components/bankrupt.tsx       | 12 ++--
+ blog/app/components/closing-banner.tsx | 32 +++++++++
+ blog/app/components/event-signup.tsx   |  2 +-
+ blog/app/components/events-strip.tsx   | 38 +++++++++++
+ blog/app/components/faq.tsx            |  8 +--
+ blog/app/components/footer.tsx         | 34 ++++------
+ blog/app/components/nav.tsx            | 13 ++--
+ blog/app/components/pledge.tsx         |  8 +--
+ blog/app/components/stats.tsx          |  8 +--
+ blog/app/components/testimonials.tsx   | 74 +++++++++++++--------
+ blog/app/events/page.tsx               | 10 +--
+ blog/app/global.css                    | 90 ++++++++++++++++++++++++++
+ blog/app/page.tsx                      | 16 +++--
+ 13 files changed, 259 insertions(+), 86 deletions(-)
+ create mode 100644 blog/app/components/closing-banner.tsx
+ create mode 100644 blog/app/components/events-strip.tsx
+
+diff --git a/blog/app/components/bankrupt.tsx b/blog/app/components/bankrupt.tsx
+index 5b5a00b..2eb712d 100644
+--- a/blog/app/components/bankrupt.tsx
++++ b/blog/app/components/bankrupt.tsx
+@@ -3,9 +3,9 @@ import Image from 'next/image'
+ 
+ export function BankruptSection() {
+   return (
+-    <section className="bg-cream text-deepnavy px-4 py-[clamp(72px,8vw,112px)]">
+-      <div className="max-w-[1200px] mx-auto grid grid-cols-1 min-[860px]:grid-cols-[minmax(0,4fr)_minmax(0,5fr)] gap-y-10 gap-x-[clamp(32px,5vw,72px)] items-center">
+-        <div className="bb-halftone w-full aspect-[1/0.92] rounded-[28px] overflow-hidden flex items-center justify-center">
++    <section className="bb-sec bg-cream text-deepnavy">
++      <div className="bb-wrap grid grid-cols-1 min-[860px]:grid-cols-[minmax(0,4fr)_minmax(0,5fr)] gap-y-10 gap-x-[clamp(32px,5vw,72px)] items-center">
++        <div className="bb-halftone bb-r w-full aspect-[1/0.92] overflow-hidden flex items-center justify-center">
+           <Image
+             src="/train-star.webp"
+             alt="A Brightline train on an orange starburst"
+@@ -15,14 +15,14 @@ export function BankruptSection() {
+           />
+         </div>
+         <div className="min-w-0">
+-          <h2 className="font-display font-black uppercase text-flameink text-[clamp(44px,5.4vw,76px)] leading-[0.95] tracking-[-0.01em]">
++          <h2 className="bb-h2 text-flameink">
+             Brightline is bankrupt.
+           </h2>
+-          <p className="mt-8 text-[21px] leading-relaxed">
++          <p className="mt-8 text-[clamp(18px,1.6vw,21px)] leading-relaxed">
+             Florida should buy it outright and run it for <u>the people</u>,{' '}
+             <span className="italic font-bold">not shareholders.</span>
+           </p>
+-          <p className="mt-5 text-[21px] leading-relaxed">
++          <p className="mt-5 text-[clamp(18px,1.6vw,21px)] leading-relaxed">
+             A public inter-city train will reduce traffic, improve accessibility, and give us more transportation
+             options. The State of Florida buying Brightline will benefit the millions of working Floridians who
+             already fund the system with their taxes.
+diff --git a/blog/app/components/closing-banner.tsx b/blog/app/components/closing-banner.tsx
+new file mode 100644
+index 0000000..a5e13ff
+--- /dev/null
++++ b/blog/app/components/closing-banner.tsx
+@@ -0,0 +1,32 @@
++// components/closing-banner.tsx — rounded "We need you!" banner before the footer
++import Image from 'next/image'
++
++export function ClosingBanner() {
++  return (
++    <section className="bb-sec bg-cream text-deepnavy" style={{ paddingTop: 0 }}>
++      <div className="bb-wrap bb-halftone bb-r overflow-hidden p-[clamp(32px,5vw,72px)]">
++        <div className="grid grid-cols-1 min-[860px]:grid-cols-[minmax(0,4fr)_minmax(0,5fr)] gap-y-10 gap-x-[clamp(32px,5vw,72px)] items-center">
++          <Image
++            src="/train-star.webp"
++            alt=""
++            aria-hidden="true"
++            width={805}
++            height={801}
++            className="block w-full max-w-[420px] h-auto mx-auto"
++          />
++          <div className="min-w-0">
++            <p className="font-script text-[clamp(56px,7vw,96px)] leading-none -rotate-3 [text-shadow:3px_3px_0_#fff]">We need you!</p>
++            <p className="mt-5 font-extrabold text-[clamp(22px,2.2vw,28px)] leading-tight">
++              Sign the pledge and follow us on social.
++            </p>
++            <p className="mt-3 text-[clamp(17px,1.5vw,19px)] leading-relaxed">
++              We need to show Florida's leaders that riders are organized, paying attention, and ready to make a
++              case for a brighter future!
++            </p>
++            <a href="/#pledge-form" className="bb-pill mt-7">Sign the pledge</a>
++          </div>
++        </div>
++      </div>
++    </section>
++  )
++}
+diff --git a/blog/app/components/event-signup.tsx b/blog/app/components/event-signup.tsx
+index 04943c5..649eadb 100644
+--- a/blog/app/components/event-signup.tsx
++++ b/blog/app/components/event-signup.tsx
+@@ -173,7 +173,7 @@ export default function EventSignup() {
+       <button
+         type="submit"
+         disabled={status === 'loading'}
+-        className="w-full min-h-[60px] rounded-[14px] border-[3px] border-deepnavy bg-flame px-5 py-4 font-display text-xl font-black uppercase tracking-wide text-deepnavy shadow-[6px_6px_0_#0c2342] transition hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[8px_8px_0_#0c2342] disabled:opacity-50 disabled:cursor-not-allowed"
++        className="bb-pill w-full"
+       >
+         {status === 'loading'
+           ? 'Signing up…'
+diff --git a/blog/app/components/events-strip.tsx b/blog/app/components/events-strip.tsx
+new file mode 100644
+index 0000000..b24482e
+--- /dev/null
++++ b/blog/app/components/events-strip.tsx
+@@ -0,0 +1,38 @@
++// components/events-strip.tsx — "Upcoming events" row on the landing page; swipes sideways on phones
++import Link from 'next/link'
++import { upcomingEvents } from '../events/events'
++
++export function EventsStrip() {
++  return (
++    <section id="events" className="bb-sec bg-cream text-deepnavy scroll-mt-20">
++      <div className="bb-wrap">
++        <div className="flex flex-wrap items-end justify-between gap-x-6 gap-y-4">
++          <h2 className="bb-h2 text-flameink">Upcoming events</h2>
++          <Link href="/events" className="bb-pill">See all</Link>
++        </div>
++
++        <div className="bb-row bb-events-row mt-[clamp(32px,4vw,48px)]" aria-label="Upcoming events">
++          {upcomingEvents.map((e) => {
++            const [dow, rest] = e.shortDate.split(', ')
++            return (
++              <Link
++                key={e.id}
++                href="/events"
++                className="bb-r flex flex-col gap-3.5 bg-white border-[3px] border-deepnavy p-[clamp(22px,2.6vw,32px)] text-deepnavy no-underline"
++              >
++                <span className="self-start inline-flex items-baseline gap-2 rounded-full bg-deepnavy text-white px-3.5 py-1.5 text-sm font-extrabold uppercase tracking-[0.06em]">
++                  <span className="text-sun">{dow}</span>
++                  {rest}
++                </span>
++                <span className="font-display font-black uppercase text-[clamp(22px,2.2vw,28px)] leading-[1.05]">{e.title}</span>
++                <span className="text-base font-semibold text-slate">
++                  {e.time} · {e.location}
++                </span>
++              </Link>
++            )
++          })}
++        </div>
++      </div>
++    </section>
++  )
++}
+diff --git a/blog/app/components/faq.tsx b/blog/app/components/faq.tsx
+index da30c2d..91637c0 100644
+--- a/blog/app/components/faq.tsx
++++ b/blog/app/components/faq.tsx
+@@ -30,13 +30,13 @@ export function FAQSection() {
+   const [open, setOpen] = useState<number | null>(null)
+ 
+   return (
+-    <section id="faq" className="bg-cream py-24 px-4 text-deepnavy scroll-mt-20">
+-      <div className="max-w-[860px] mx-auto">
+-        <h2 className="font-display text-[clamp(40px,5vw,60px)] font-black uppercase leading-none">
++    <section id="faq" className="bb-sec bg-cream text-deepnavy scroll-mt-20">
++      <div className="bb-wrap max-w-[900px]">
++        <h2 className="bb-h2 text-flameink">
+           Questions
+         </h2>
+ 
+-        <div className="mt-8 border-t-[3px] border-deepnavy">
++        <div className="mt-[clamp(32px,4vw,48px)] border-t-[3px] border-deepnavy">
+           {faqs.map((faq, i) => (
+             <div key={i} className="border-b-[3px] border-deepnavy">
+               <button
+diff --git a/blog/app/components/footer.tsx b/blog/app/components/footer.tsx
+index 56372b4..bb3a4e2 100644
+--- a/blog/app/components/footer.tsx
++++ b/blog/app/components/footer.tsx
+@@ -1,27 +1,20 @@
+-// components/footer.tsx — "We need you!" block from the palm card + legal footer
+-
++// components/footer.tsx — slim footer: wordmark, socials, contact, legal
+ export function Footer() {
+   return (
+-    <footer className="bg-deepnavy text-white">
+-      <div className="max-w-6xl mx-auto px-4 pt-24 pb-10">
+-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+-          <div>
+-            <p className="font-script text-sun text-[clamp(60px,8vw,96px)] leading-none -rotate-3">We need you!</p>
+-            <p className="mt-4 font-extrabold text-[26px]">Sign the pledge and follow us on social!</p>
+-            <p className="mt-3 text-lg leading-relaxed text-white/85">
+-              We need to show Florida's leaders that riders are organized, paying attention, and ready to make a
+-              case for a brighter future!
+-            </p>
+-          </div>
+-
+-          <div className="flex flex-col items-start gap-4">
++    <footer className="bg-deepnavy text-white bb-gutter pt-[clamp(56px,6vw,80px)] pb-10">
++      <div className="bb-wrap">
++        <div className="flex flex-wrap items-center justify-between gap-x-10 gap-y-5">
++          <p className="font-display font-black uppercase text-[clamp(22px,2.4vw,30px)] leading-none">
++            Buy <span className="italic">Brightline</span>
++          </p>
++          <div className="flex flex-wrap gap-x-7 gap-y-2">
+             <a
+               href="https://instagram.com/buybrightline"
+               target="_blank"
+               rel="noopener noreferrer"
+-              className="inline-flex items-center gap-2.5 min-h-[44px] text-sun font-bold text-xl no-underline hover:underline"
++              className="inline-flex items-center gap-2.5 min-h-[44px] text-sun font-bold text-lg no-underline hover:underline"
+             >
+-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
++              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                 <rect x="3" y="3" width="18" height="18" rx="5" />
+                 <circle cx="12" cy="12" r="4" />
+                 <circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" />
+@@ -34,12 +27,9 @@ export function Footer() {
+           </div>
+         </div>
+ 
+-        <div className="mt-20 pt-7 border-t border-white/25 flex flex-col gap-2.5">
+-          <p className="font-black uppercase text-xl">
+-            Buy <span className="italic">Brightline</span>
+-          </p>
++        <div className="mt-10 pt-7 border-t border-white/25 flex flex-col gap-2.5">
+           <p className="text-white/85">A grassroots campaign to buy Brightline and make it public.</p>
+-          <p className="mt-3 text-xs font-bold uppercase tracking-widest text-white/70">Legal Disclaimer</p>
++          <p className="mt-2 text-xs font-bold uppercase tracking-widest text-white/70">Legal Disclaimer</p>
+           <p className="text-[13px] leading-relaxed text-white/70 max-w-4xl">
+             This website and campaign are independent advocacy efforts and are not affiliated with, sponsored by, endorsed by, authorized by, or associated with Brightline Holdings LLC, Brightline Trains Florida LLC, or any Brightline affiliate. All references to Brightline are for identification and discussion purposes only. Contributions made through this website are not made to, received by, or used for the benefit of Brightline. Funds are received solely by the sponsoring organization for advocacy, educational, and political activities.
+           </p>
+diff --git a/blog/app/components/nav.tsx b/blog/app/components/nav.tsx
+index 3e8cb1b..412f2c8 100644
+--- a/blog/app/components/nav.tsx
++++ b/blog/app/components/nav.tsx
+@@ -26,9 +26,9 @@ export function Navbar() {
+   }, [open])
+ 
+   return (
+-    <header className="w-full bg-sand sticky top-0 z-50">
+-      <nav className="max-w-[1200px] mx-auto flex items-center justify-between gap-4 h-[76px] px-4" id="nav" aria-label="Main">
+-        <Link href="/" className="font-display font-black uppercase text-[19px] sm:text-[26px] tracking-[0.02em] leading-none whitespace-nowrap text-deepnavy no-underline">
++    <header className="w-full bg-sand sticky top-0 z-50 bb-gutter">
++      <nav className="bb-wrap flex items-center justify-between gap-3 h-[76px]" id="nav" aria-label="Main">
++        <Link href="/" className="font-display font-black uppercase text-[17px] min-[400px]:text-[19px] sm:text-[26px] tracking-[0.02em] leading-none whitespace-nowrap text-deepnavy no-underline">
+           Buy <span className="italic">Brightline</span>
+         </Link>
+ 
+@@ -42,9 +42,10 @@ export function Navbar() {
+           </div>
+           <Link
+             href="/#pledge-form"
+-            className="inline-flex items-center whitespace-nowrap min-h-[44px] px-3.5 sm:px-5 text-[15px] sm:text-base rounded-full bg-deepnavy text-white font-bold no-underline hover:bg-flame hover:text-deepnavy transition-colors"
++            className="bb-pill bb-pill-sm"
+           >
+-            Sign the pledge
++            <span className="max-[399px]:hidden">Sign the pledge</span>
++            <span className="min-[400px]:hidden">Pledge</span>
+           </Link>
+           <button
+             type="button"
+@@ -96,7 +97,7 @@ export function Navbar() {
+             <Link
+               href="/#pledge-form"
+               onClick={() => setOpen(false)}
+-              className="mt-3 inline-flex items-center min-h-[60px] px-10 rounded-full bg-flame text-deepnavy font-display font-black uppercase text-2xl no-underline"
++              className="bb-pill mt-3"
+             >
+               Sign the pledge
+             </Link>
+diff --git a/blog/app/components/pledge.tsx b/blog/app/components/pledge.tsx
+index 5a77314..3f571f2 100644
+--- a/blog/app/components/pledge.tsx
++++ b/blog/app/components/pledge.tsx
+@@ -16,7 +16,7 @@ interface FormValues {
+ }
+ 
+ const inputClass =
+-  "w-full min-h-[52px] rounded-[4px] border-0 bg-white px-3.5 py-3 text-[17px] text-deepnavy placeholder-slate/60 resize-y focus:outline focus:outline-[3px] focus:outline-[#fa8238] focus:outline-offset-2";
++  "w-full min-h-[52px] rounded-xl border-0 bg-white px-3.5 py-3 text-[17px] text-deepnavy placeholder-slate/60 resize-y focus:outline focus:outline-[3px] focus:outline-[#fa8238] focus:outline-offset-2";
+ const labelClass = "block text-[15px] font-bold mb-2";
+ const checkClass = "mt-px w-[22px] h-[22px] flex-none accent-flame";
+ const checkLabelClass = "flex items-start gap-2.5 text-base leading-snug cursor-pointer";
+@@ -80,8 +80,8 @@ export default function Pledge({ count }: { count?: number }) {
+   return (
+     <div className="grid grid-cols-1 min-[860px]:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] gap-x-16 gap-y-10 items-start">
+       <div className="min-w-0">
+-        <h2 className="font-display font-black uppercase leading-[0.95] text-sun text-[clamp(40px,5vw,64px)]">Sign the pledge</h2>
+-        <p className="mt-5 text-[19px] leading-normal">
++        <h2 className="bb-h2 text-sun">Sign the pledge</h2>
++        <p className="mt-6 text-[clamp(18px,1.6vw,21px)] leading-normal">
+           Tell Florida's leaders to use our tax dollars to buy Brightline and make it public — and run it for
+           the people, <span className="italic font-bold">not shareholders.</span>
+         </p>
+@@ -160,7 +160,7 @@ export default function Pledge({ count }: { count?: number }) {
+           <button
+             type="submit"
+             disabled={loading}
+-            className="min-h-[56px] rounded-[4px] bg-flame px-10 py-4 font-display text-xl font-black uppercase tracking-wide text-deepnavy transition-colors hover:bg-sun disabled:opacity-60 disabled:cursor-not-allowed"
++            className="bb-pill"
+           >
+             {loading ? "Submitting..." : "Sign the pledge"}
+           </button>
+diff --git a/blog/app/components/stats.tsx b/blog/app/components/stats.tsx
+index 7fe7e7b..6eaf66c 100644
+--- a/blog/app/components/stats.tsx
++++ b/blog/app/components/stats.tsx
+@@ -9,13 +9,13 @@ const stats = [
+ 
+ export function StatsSection() {
+   return (
+-    <section id="numbers" className="bg-deepnavy text-deepnavy px-3 py-[clamp(72px,8vw,112px)] scroll-mt-20">
+-      <div className="max-w-[1200px] mx-auto">
+-        <h2 className="text-center font-display font-black uppercase text-sun text-[clamp(40px,6vw,84px)] leading-none tracking-[-0.01em]">
++    <section id="numbers" className="bb-sec bg-deepnavy text-deepnavy scroll-mt-20">
++      <div className="bb-wrap">
++        <h2 className="bb-h2 text-center text-sun">
+           By the numbers
+         </h2>
+ 
+-        <div className="mt-[clamp(36px,7vw,96px)] grid grid-cols-3 gap-[clamp(10px,3.5vw,48px)]">
++        <div className="mt-[clamp(40px,6vw,80px)] grid grid-cols-3 gap-[clamp(10px,3.5vw,48px)]">
+           {stats.map(({ number, unit, label, note }) => (
+             <div key={number} className="flex flex-col items-center text-center min-w-0">
+               <div className="relative w-full max-w-[260px] aspect-square flex flex-col items-center justify-center">
+diff --git a/blog/app/components/testimonials.tsx b/blog/app/components/testimonials.tsx
+index 0d5bd13..c431de2 100644
+--- a/blog/app/components/testimonials.tsx
++++ b/blog/app/components/testimonials.tsx
+@@ -37,38 +37,56 @@ export function TestimonialsSection() {
+   const t = testimonials[index]
+ 
+   return (
+-    <section className="bg-sand py-24 px-4 text-deepnavy" aria-roledescription="carousel" aria-label="Why we want to buy Brightline">
+-      <div className="max-w-4xl mx-auto">
+-        <h2 className="text-center font-script font-normal text-[clamp(44px,6vw,64px)] leading-none -rotate-3">
+-          Why we want to buy Brightline
+-        </h2>
++    <section className="bb-sec bg-sand text-deepnavy" aria-label="Why we want to buy Brightline">
++      <div className="bb-wrap max-w-[960px]">
++        <h2 className="bb-h2 text-center">Why we want to buy Brightline</h2>
+ 
+-        <figure className="mt-12 bg-white border-[3px] border-deepnavy rounded-[22px] shadow-[10px_10px_0_#0c2342] p-8 sm:p-12 min-h-[280px] flex flex-col justify-between">
+-          <blockquote className="font-display italic font-semibold text-[clamp(20px,2.4vw,28px)] leading-snug">
+-            “{t.quote}”
+-          </blockquote>
+-          <figcaption className="mt-8 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+-            <span className="font-black uppercase text-xl">{t.name}</span>
+-            <span className="font-script text-2xl text-flameink">{t.descriptor}</span>
+-            <span className="text-sm text-slate">Name may have been changed.</span>
+-          </figcaption>
+-        </figure>
++        {/* Desktop: one card with arrows and dots */}
++        <div className="hidden md:block" aria-roledescription="carousel">
++          <figure className="bb-r mt-12 bg-white border-[3px] border-deepnavy shadow-[10px_10px_0_#0c2342] p-12 min-h-[280px] flex flex-col justify-between">
++            <blockquote className="font-display italic font-semibold text-[clamp(20px,2.4vw,28px)] leading-snug">
++              “{t.quote}”
++            </blockquote>
++            <figcaption className="mt-8 flex flex-wrap items-baseline gap-x-3 gap-y-1">
++              <span className="font-black uppercase text-xl">{t.name}</span>
++              <span className="font-script text-2xl text-flameink">{t.descriptor}</span>
++              <span className="text-sm text-slate">Name may have been changed.</span>
++            </figcaption>
++          </figure>
+ 
+-        <div className="mt-8 flex items-center justify-center gap-4">
+-          <button onClick={prev} aria-label="Previous story" className="w-12 h-12 rounded-full border-2 border-deepnavy bg-white font-bold text-xl hover:bg-deepnavy hover:text-white transition-colors">
+-            ←
+-          </button>
+-          <div className="flex gap-1">
+-            {testimonials.map((_, i) => (
+-              <button key={i} onClick={() => setIndex(i)} aria-label={`Story ${i + 1}`} aria-current={i === index}
+-                className="w-11 h-11 flex items-center justify-center">
+-                <span className={`block w-3 h-3 rounded-full border-2 border-deepnavy ${i === index ? 'bg-deepnavy' : 'bg-transparent'}`} />
+-              </button>
++          <div className="mt-8 flex items-center justify-center gap-4">
++            <button onClick={prev} aria-label="Previous story" className="w-12 h-12 rounded-full border-2 border-deepnavy bg-white font-bold text-xl hover:bg-deepnavy hover:text-white transition-colors">
++              ←
++            </button>
++            <div className="flex gap-1">
++              {testimonials.map((_, i) => (
++                <button key={i} onClick={() => setIndex(i)} aria-label={`Story ${i + 1}`} aria-current={i === index}
++                  className="w-11 h-11 flex items-center justify-center">
++                  <span className={`block w-3.5 h-3.5 rounded-full border-2 border-deepnavy ${i === index ? 'bg-deepnavy' : 'bg-transparent'}`} />
++                </button>
++              ))}
++            </div>
++            <button onClick={next} aria-label="Next story" className="w-12 h-12 rounded-full border-2 border-deepnavy bg-white font-bold text-xl hover:bg-deepnavy hover:text-white transition-colors">
++              →
++            </button>
++          </div>
++        </div>
++
++        {/* Phones: swipe through every story */}
++        <div className="md:hidden">
++          <div className="bb-row bb-stories-row mt-8" aria-label="Stories, swipe for more">
++            {testimonials.map((s) => (
++              <figure key={s.name} className="bb-r m-0 bg-white border-[3px] border-deepnavy p-6 flex flex-col justify-between gap-6">
++                <blockquote className="font-display italic font-semibold text-[19px] leading-snug">“{s.quote}”</blockquote>
++                <figcaption className="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
++                  <span className="font-black uppercase text-lg">{s.name}</span>
++                  <span className="font-script text-[22px] text-flameink">{s.descriptor}</span>
++                  <span className="basis-full text-[13px] text-slate">Name may have been changed.</span>
++                </figcaption>
++              </figure>
+             ))}
+           </div>
+-          <button onClick={next} aria-label="Next story" className="w-12 h-12 rounded-full border-2 border-deepnavy bg-white font-bold text-xl hover:bg-deepnavy hover:text-white transition-colors">
+-            →
+-          </button>
++          <p className="mt-1 text-center text-sm font-semibold">Swipe for more stories →</p>
+         </div>
+       </div>
+     </section>
+diff --git a/blog/app/events/page.tsx b/blog/app/events/page.tsx
+index 4100d59..2a61ac4 100644
+--- a/blog/app/events/page.tsx
++++ b/blog/app/events/page.tsx
+@@ -80,7 +80,7 @@ export default function EventsPage() {
+       <Navbar />
+ 
+       {/* Header band */}
+-      <section className="bb-halftone px-4 pt-[clamp(24px,4vw,48px)] pb-[clamp(48px,6vw,80px)] text-center">
++      <section className="bb-halftone bb-gutter pt-[clamp(24px,4vw,48px)] pb-[clamp(48px,6vw,80px)] text-center">
+         <p className="font-script text-[clamp(36px,5vw,60px)] leading-none -rotate-[4deg]">Get involved</p>
+         <h1 className="mt-3 font-display font-black uppercase text-[clamp(48px,8vw,112px)] leading-[0.92] -rotate-3 [text-shadow:5px_5px_0_#fff]">
+           Upcoming events
+@@ -91,8 +91,8 @@ export default function EventsPage() {
+       </section>
+ 
+       {/* Events + sign-up */}
+-      <section id="events" className="bg-cream px-4 py-[clamp(56px,7vw,96px)]">
+-        <div className="max-w-[1200px] mx-auto grid grid-cols-1 min-[900px]:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] gap-12 items-start">
++      <section id="events" className="bb-sec bg-cream">
++        <div className="bb-wrap grid grid-cols-1 min-[900px]:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] gap-12 items-start">
+           <div className="flex flex-col gap-7 min-w-0">
+             {upcomingEvents.map((e) => {
+               const [dow, rest] = e.shortDate.split(', ')
+@@ -100,7 +100,7 @@ export default function EventsPage() {
+               return (
+                 <article
+                   key={e.id}
+-                  className="flex items-start gap-[clamp(16px,3vw,28px)] bg-white border-[3px] border-deepnavy rounded-[22px] shadow-[8px_8px_0_#0c2342] p-[clamp(20px,3vw,32px)]"
++                  className="bb-r flex items-start gap-[clamp(16px,3vw,28px)] bg-white border-[3px] border-deepnavy shadow-[8px_8px_0_#0c2342] p-[clamp(20px,3vw,32px)]"
+                 >
+                   <div aria-hidden="true" className="flex-none w-[clamp(72px,9vw,96px)] aspect-square rounded-2xl bg-deepnavy text-white flex flex-col items-center justify-center text-center">
+                     <span className="text-[13px] font-extrabold uppercase tracking-[0.08em] text-sun">{dow}</span>
+@@ -121,7 +121,7 @@ export default function EventsPage() {
+           </div>
+ 
+           <aside id="signup" className="min-w-0 min-[900px]:sticky min-[900px]:top-24 scroll-mt-24">
+-            <div className="bg-white border-[3px] border-deepnavy rounded-[22px] shadow-[10px_10px_0_#0c2342] p-[clamp(24px,3.5vw,40px)]">
++            <div className="bb-r bg-white border-[3px] border-deepnavy shadow-[10px_10px_0_#0c2342] p-[clamp(24px,3.5vw,40px)]">
+               <EventSignup />
+             </div>
+           </aside>
+diff --git a/blog/app/global.css b/blog/app/global.css
+index aab69a4..c24bb9f 100644
+--- a/blog/app/global.css
++++ b/blog/app/global.css
+@@ -28,6 +28,96 @@
+   background-position: center;
+ }
+ 
++/* ---- Shared layout tokens (one rhythm, one heading, one button, one radius) ---- */
++.bb-sec {
++  padding: clamp(72px, 9vw, 120px) clamp(16px, 4vw, 48px);
++}
++.bb-gutter {
++  padding-left: clamp(16px, 4vw, 48px);
++  padding-right: clamp(16px, 4vw, 48px);
++}
++.bb-wrap {
++  max-width: 1200px;
++  margin-left: auto;
++  margin-right: auto;
++}
++.bb-h2 {
++  margin: 0;
++  font-family: var(--font-display), Georgia, serif;
++  font-weight: 900;
++  text-transform: uppercase;
++  font-size: clamp(40px, 5.6vw, 80px);
++  line-height: 0.95;
++  letter-spacing: -0.01em;
++}
++.bb-pill {
++  display: inline-flex;
++  align-items: center;
++  justify-content: center;
++  gap: 10px;
++  min-height: 56px;
++  padding: 14px 36px;
++  border-radius: 999px;
++  border: 0;
++  background: #fa8238;
++  color: #0c2342 !important;
++  font-family: var(--font-display), Georgia, serif;
++  font-weight: 900;
++  font-size: clamp(17px, 1.6vw, 20px);
++  text-transform: uppercase;
++  letter-spacing: 0.02em;
++  text-decoration: none !important;
++  white-space: nowrap;
++  cursor: pointer;
++  transition: background-color 0.12s;
++}
++.bb-pill:hover {
++  background: #ffd478;
++}
++.bb-pill:disabled {
++  opacity: 0.6;
++  cursor: not-allowed;
++}
++.bb-pill-sm {
++  min-height: 44px;
++  padding: 10px 20px;
++  font-size: 15px;
++}
++.bb-r {
++  border-radius: 28px;
++}
++@media (max-width: 420px) {
++  .bb-pill-sm {
++    padding: 10px 14px;
++    font-size: 13px;
++  }
++}
++
++/* Sideways swipe rows with snap points */
++.bb-row {
++  display: grid;
++  grid-auto-flow: column;
++  gap: clamp(16px, 2vw, 28px);
++  overflow-x: auto;
++  scroll-snap-type: x mandatory;
++  padding: 4px 4px 20px;
++  margin: 0 -4px;
++}
++.bb-row > * {
++  scroll-snap-align: start;
++}
++.bb-events-row {
++  grid-auto-columns: minmax(280px, calc((100% - 56px) / 3));
++}
++.bb-stories-row {
++  grid-auto-columns: 86%;
++}
++@media (max-width: 860px) {
++  .bb-events-row {
++    grid-auto-columns: 82%;
++  }
++}
++
+ .bb-lift {
+   text-shadow: 5px 5px 0 #fff;
+ }
+diff --git a/blog/app/page.tsx b/blog/app/page.tsx
+index 2a49c2f..e73b6eb 100644
+--- a/blog/app/page.tsx
++++ b/blog/app/page.tsx
+@@ -4,6 +4,8 @@ import Pledge from './components/pledge'
+ import { AnnouncementBanner } from './components/announcements'
+ import { BankruptSection } from './components/bankrupt'
+ import { StatsSection } from './components/stats'
++import { EventsStrip } from './components/events-strip'
++import { ClosingBanner } from './components/closing-banner'
+ import { TestimonialsSection } from './components/testimonials'
+ import { FAQSection } from './components/faq'
+ import { Footer } from './components/footer'
+@@ -16,9 +18,9 @@ export default function Page() {
+       <AnnouncementBanner />
+       <Navbar />
+ 
+-      {/* Compact hero on the halftone background */}
+-      <section id="pledge" className="bb-halftone px-4 pt-2 pb-5 text-deepnavy">
+-        <div className="max-w-[1100px] mx-auto text-center flex flex-col items-center">
++      {/* Hero sized to the screen: about 60% of the viewport height, with a floor and a ceiling */}
++      <section id="pledge" className="bb-halftone bb-gutter text-deepnavy min-h-[clamp(420px,calc(62vh-76px),680px)] flex flex-col">
++        <div className="flex-1 bb-wrap w-full text-center flex flex-col items-center justify-center pt-2 pb-[clamp(28px,4vw,48px)]">
+           <h1 className="m-0 w-full">
+             <span className="block font-display font-black text-[clamp(26px,3.4vw,42px)] leading-tight -rotate-[4deg] [text-shadow:3px_3px_0_#fff]">
+               Brightline is going bankrupt.
+@@ -30,7 +32,7 @@ export default function Page() {
+               width={1426}
+               height={798}
+               priority
+-              className="block mx-auto mt-2 w-full max-w-[640px] h-auto"
++              className="block mx-auto mt-2 w-[min(100%,720px,92vh)] h-auto"
+             />
+           </h1>
+           <p className="mt-2 text-[clamp(19px,2vw,24px)] font-medium leading-tight">
+@@ -40,16 +42,18 @@ export default function Page() {
+       </section>
+ 
+       {/* Pledge form on a navy band */}
+-      <section id="pledge-form" className="bg-deepnavy text-white px-4 py-[clamp(56px,7vw,88px)] scroll-mt-20">
+-        <div className="max-w-[1200px] mx-auto">
++      <section id="pledge-form" className="bb-sec bg-deepnavy text-white scroll-mt-20">
++        <div className="bb-wrap">
+           <Pledge count={PLEDGE_COUNT} />
+         </div>
+       </section>
+ 
+       <BankruptSection />
+       <StatsSection />
++      <EventsStrip />
+       <TestimonialsSection />
+       <FAQSection />
++      <ClosingBanner />
+       <Footer />
+     </div>
+   )
+-- 
+2.43.0
+
