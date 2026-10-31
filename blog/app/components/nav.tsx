@@ -26,9 +26,9 @@ export function Navbar() {
   }, [open])
 
   return (
-    <header className="w-full bg-sand sticky top-0 z-50">
-      <nav className="max-w-[1200px] mx-auto flex items-center justify-between gap-4 h-[76px] px-4" id="nav" aria-label="Main">
-        <Link href="/" className="font-display font-black uppercase text-[19px] sm:text-[26px] tracking-[0.02em] leading-none whitespace-nowrap text-deepnavy no-underline">
+    <header className="w-full bg-sand sticky top-0 z-50 bb-gutter">
+      <nav className="bb-wrap flex items-center justify-between gap-3 h-[76px]" id="nav" aria-label="Main">
+        <Link href="/" className="font-display font-black uppercase text-[17px] min-[400px]:text-[19px] sm:text-[26px] tracking-[0.02em] leading-none whitespace-nowrap text-deepnavy no-underline">
           Buy <span className="italic">Brightline</span>
         </Link>
 
@@ -42,9 +42,10 @@ export function Navbar() {
           </div>
           <Link
             href="/#pledge-form"
-            className="inline-flex items-center whitespace-nowrap min-h-[44px] px-3.5 sm:px-5 text-[15px] sm:text-base rounded-full bg-deepnavy text-white font-bold no-underline hover:bg-flame hover:text-deepnavy transition-colors"
+            className="bb-pill bb-pill-sm"
           >
-            Sign the pledge
+            <span className="max-[399px]:hidden">Sign the pledge</span>
+            <span className="min-[400px]:hidden">Pledge</span>
           </Link>
           <button
             type="button"
@@ -96,7 +97,7 @@ export function Navbar() {
             <Link
               href="/#pledge-form"
               onClick={() => setOpen(false)}
-              className="mt-3 inline-flex items-center min-h-[60px] px-10 rounded-full bg-flame text-deepnavy font-display font-black uppercase text-2xl no-underline"
+              className="bb-pill mt-3"
             >
               Sign the pledge
             </Link>

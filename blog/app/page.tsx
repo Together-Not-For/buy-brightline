@@ -4,6 +4,8 @@ import Pledge from './components/pledge'
 import { AnnouncementBanner } from './components/announcements'
 import { BankruptSection } from './components/bankrupt'
 import { StatsSection } from './components/stats'
+import { EventsStrip } from './components/events-strip'
+import { ClosingBanner } from './components/closing-banner'
 import { TestimonialsSection } from './components/testimonials'
 import { FAQSection } from './components/faq'
 import { Footer } from './components/footer'
@@ -16,9 +18,9 @@ export default function Page() {
       <AnnouncementBanner />
       <Navbar />
 
-      {/* Compact hero on the halftone background */}
-      <section id="pledge" className="bb-halftone px-4 pt-2 pb-5 text-deepnavy">
-        <div className="max-w-[1100px] mx-auto text-center flex flex-col items-center">
+      {/* Hero sized to the screen: about 60% of the viewport height, with a floor and a ceiling */}
+      <section id="pledge" className="bb-halftone bb-gutter text-deepnavy min-h-[clamp(420px,calc(62vh-76px),680px)] flex flex-col">
+        <div className="flex-1 bb-wrap w-full text-center flex flex-col items-center justify-center pt-2 pb-[clamp(28px,4vw,48px)]">
           <h1 className="m-0 w-full">
             <span className="block font-display font-black text-[clamp(26px,3.4vw,42px)] leading-tight -rotate-[4deg] [text-shadow:3px_3px_0_#fff]">
               Brightline is going bankrupt.
@@ -30,7 +32,7 @@ export default function Page() {
               width={1426}
               height={798}
               priority
-              className="block mx-auto mt-2 w-full max-w-[640px] h-auto"
+              className="block mx-auto mt-2 w-[min(100%,720px,92vh)] h-auto"
             />
           </h1>
           <p className="mt-2 text-[clamp(19px,2vw,24px)] font-medium leading-tight">
@@ -40,16 +42,18 @@ export default function Page() {
       </section>
 
       {/* Pledge form on a navy band */}
-      <section id="pledge-form" className="bg-deepnavy text-white px-4 py-[clamp(56px,7vw,88px)] scroll-mt-20">
-        <div className="max-w-[1200px] mx-auto">
+      <section id="pledge-form" className="bb-sec bg-deepnavy text-white scroll-mt-20">
+        <div className="bb-wrap">
           <Pledge count={PLEDGE_COUNT} />
         </div>
       </section>
 
       <BankruptSection />
       <StatsSection />
+      <EventsStrip />
       <TestimonialsSection />
       <FAQSection />
+      <ClosingBanner />
       <Footer />
     </div>
   )

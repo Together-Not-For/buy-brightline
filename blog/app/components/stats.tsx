@@ -9,13 +9,13 @@ const stats = [
 
 export function StatsSection() {
   return (
-    <section id="numbers" className="bg-deepnavy text-deepnavy px-3 py-[clamp(72px,8vw,112px)] scroll-mt-20">
-      <div className="max-w-[1200px] mx-auto">
-        <h2 className="text-center font-display font-black uppercase text-sun text-[clamp(40px,6vw,84px)] leading-none tracking-[-0.01em]">
+    <section id="numbers" className="bb-sec bg-deepnavy text-deepnavy scroll-mt-20">
+      <div className="bb-wrap">
+        <h2 className="bb-h2 text-center text-sun">
           By the numbers
         </h2>
 
-        <div className="mt-[clamp(36px,7vw,96px)] grid grid-cols-3 gap-[clamp(10px,3.5vw,48px)]">
+        <div className="mt-[clamp(40px,6vw,80px)] grid grid-cols-3 gap-[clamp(10px,3.5vw,48px)]">
           {stats.map(({ number, unit, label, note }) => (
             <div key={number} className="flex flex-col items-center text-center min-w-0">
               <div className="relative w-full max-w-[260px] aspect-square flex flex-col items-center justify-center">

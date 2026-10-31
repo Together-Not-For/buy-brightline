@@ -80,7 +80,7 @@ export default function EventsPage() {
       <Navbar />
 
       {/* Header band */}
-      <section className="bb-halftone px-4 pt-[clamp(24px,4vw,48px)] pb-[clamp(48px,6vw,80px)] text-center">
+      <section className="bb-halftone bb-gutter pt-[clamp(24px,4vw,48px)] pb-[clamp(48px,6vw,80px)] text-center">
         <p className="font-script text-[clamp(36px,5vw,60px)] leading-none -rotate-[4deg]">Get involved</p>
         <h1 className="mt-3 font-display font-black uppercase text-[clamp(48px,8vw,112px)] leading-[0.92] -rotate-3 [text-shadow:5px_5px_0_#fff]">
           Upcoming events
@@ -91,8 +91,8 @@ export default function EventsPage() {
       </section>
 
       {/* Events + sign-up */}
-      <section id="events" className="bg-cream px-4 py-[clamp(56px,7vw,96px)]">
-        <div className="max-w-[1200px] mx-auto grid grid-cols-1 min-[900px]:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] gap-12 items-start">
+      <section id="events" className="bb-sec bg-cream">
+        <div className="bb-wrap grid grid-cols-1 min-[900px]:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] gap-12 items-start">
           <div className="flex flex-col gap-7 min-w-0">
             {upcomingEvents.map((e) => {
               const [dow, rest] = e.shortDate.split(', ')
@@ -100,7 +100,7 @@ export default function EventsPage() {
               return (
                 <article
                   key={e.id}
-                  className="flex items-start gap-[clamp(16px,3vw,28px)] bg-white border-[3px] border-deepnavy rounded-[22px] shadow-[8px_8px_0_#0c2342] p-[clamp(20px,3vw,32px)]"
+                  className="bb-r flex items-start gap-[clamp(16px,3vw,28px)] bg-white border-[3px] border-deepnavy shadow-[8px_8px_0_#0c2342] p-[clamp(20px,3vw,32px)]"
                 >
                   <div aria-hidden="true" className="flex-none w-[clamp(72px,9vw,96px)] aspect-square rounded-2xl bg-deepnavy text-white flex flex-col items-center justify-center text-center">
                     <span className="text-[13px] font-extrabold uppercase tracking-[0.08em] text-sun">{dow}</span>
@@ -121,7 +121,7 @@ export default function EventsPage() {
           </div>
 
           <aside id="signup" className="min-w-0 min-[900px]:sticky min-[900px]:top-24 scroll-mt-24">
-            <div className="bg-white border-[3px] border-deepnavy rounded-[22px] shadow-[10px_10px_0_#0c2342] p-[clamp(24px,3.5vw,40px)]">
+            <div className="bb-r bg-white border-[3px] border-deepnavy shadow-[10px_10px_0_#0c2342] p-[clamp(24px,3.5vw,40px)]">
               <EventSignup />
             </div>
           </aside>
