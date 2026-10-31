@@ -37,56 +37,38 @@ export function TestimonialsSection() {
   const t = testimonials[index]
 
   return (
-    <section className="bb-sec bg-sand text-deepnavy" aria-label="Why we want to buy Brightline">
-      <div className="bb-wrap max-w-[960px]">
-        <h2 className="bb-h2 text-center">Why we want to buy Brightline</h2>
+    <section className="bg-sand py-24 px-4 text-deepnavy" aria-roledescription="carousel" aria-label="Why we want to buy Brightline">
+      <div className="max-w-4xl mx-auto">
+        <h2 className="text-center font-script font-normal text-[clamp(44px,6vw,64px)] leading-none -rotate-3">
+          Why we want to buy Brightline
+        </h2>
 
-        {/* Desktop: one card with arrows and dots */}
-        <div className="hidden md:block" aria-roledescription="carousel">
-          <figure className="bb-r mt-12 bg-white border-[3px] border-deepnavy shadow-[10px_10px_0_#0c2342] p-12 min-h-[280px] flex flex-col justify-between">
-            <blockquote className="font-display italic font-semibold text-[clamp(20px,2.4vw,28px)] leading-snug">
-              “{t.quote}”
-            </blockquote>
-            <figcaption className="mt-8 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-              <span className="font-black uppercase text-xl">{t.name}</span>
-              <span className="font-script text-2xl text-flameink">{t.descriptor}</span>
-              <span className="text-sm text-slate">Name may have been changed.</span>
-            </figcaption>
-          </figure>
+        <figure className="mt-12 bg-white border-[3px] border-deepnavy rounded-[22px] shadow-[10px_10px_0_#0c2342] p-8 sm:p-12 min-h-[280px] flex flex-col justify-between">
+          <blockquote className="font-display italic font-semibold text-[clamp(20px,2.4vw,28px)] leading-snug">
+            “{t.quote}”
+          </blockquote>
+          <figcaption className="mt-8 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+            <span className="font-black uppercase text-xl">{t.name}</span>
+            <span className="font-script text-2xl text-flameink">{t.descriptor}</span>
+            <span className="text-sm text-slate">Name may have been changed.</span>
+          </figcaption>
+        </figure>
 
-          <div className="mt-8 flex items-center justify-center gap-4">
-            <button onClick={prev} aria-label="Previous story" className="w-12 h-12 rounded-full border-2 border-deepnavy bg-white font-bold text-xl hover:bg-deepnavy hover:text-white transition-colors">
-              ←
-            </button>
-            <div className="flex gap-1">
-              {testimonials.map((_, i) => (
-                <button key={i} onClick={() => setIndex(i)} aria-label={`Story ${i + 1}`} aria-current={i === index}
-                  className="w-11 h-11 flex items-center justify-center">
-                  <span className={`block w-3.5 h-3.5 rounded-full border-2 border-deepnavy ${i === index ? 'bg-deepnavy' : 'bg-transparent'}`} />
-                </button>
-              ))}
-            </div>
-            <button onClick={next} aria-label="Next story" className="w-12 h-12 rounded-full border-2 border-deepnavy bg-white font-bold text-xl hover:bg-deepnavy hover:text-white transition-colors">
-              →
-            </button>
-          </div>
-        </div>
-
-        {/* Phones: swipe through every story */}
-        <div className="md:hidden">
-          <div className="bb-row bb-stories-row mt-8" aria-label="Stories, swipe for more">
-            {testimonials.map((s) => (
-              <figure key={s.name} className="bb-r m-0 bg-white border-[3px] border-deepnavy p-6 flex flex-col justify-between gap-6">
-                <blockquote className="font-display italic font-semibold text-[19px] leading-snug">“{s.quote}”</blockquote>
-                <figcaption className="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
-                  <span className="font-black uppercase text-lg">{s.name}</span>
-                  <span className="font-script text-[22px] text-flameink">{s.descriptor}</span>
-                  <span className="basis-full text-[13px] text-slate">Name may have been changed.</span>
-                </figcaption>
-              </figure>
+        <div className="mt-8 flex items-center justify-center gap-4">
+          <button onClick={prev} aria-label="Previous story" className="w-12 h-12 rounded-full border-2 border-deepnavy bg-white font-bold text-xl hover:bg-deepnavy hover:text-white transition-colors">
+            ←
+          </button>
+          <div className="flex gap-1">
+            {testimonials.map((_, i) => (
+              <button key={i} onClick={() => setIndex(i)} aria-label={`Story ${i + 1}`} aria-current={i === index}
+                className="w-11 h-11 flex items-center justify-center">
+                <span className={`block w-3 h-3 rounded-full border-2 border-deepnavy ${i === index ? 'bg-deepnavy' : 'bg-transparent'}`} />
+              </button>
             ))}
           </div>
-          <p className="mt-1 text-center text-sm font-semibold">Swipe for more stories →</p>
+          <button onClick={next} aria-label="Next story" className="w-12 h-12 rounded-full border-2 border-deepnavy bg-white font-bold text-xl hover:bg-deepnavy hover:text-white transition-colors">
+            →
+          </button>
         </div>
       </div>
     </section>

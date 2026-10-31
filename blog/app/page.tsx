@@ -4,13 +4,15 @@ import Pledge from './components/pledge'
 import { AnnouncementBanner } from './components/announcements'
 import { BankruptSection } from './components/bankrupt'
 import { StatsSection } from './components/stats'
-import { EventsStrip } from './components/events-strip'
+import { PlanSection } from './components/plan'
+// import { EventsStrip } from './components/events-strip'
+import { EndorsementsSection } from './components/endorsements'
 import { ClosingBanner } from './components/closing-banner'
 import { TestimonialsSection } from './components/testimonials'
 import { FAQSection } from './components/faq'
 import { Footer } from './components/footer'
 
-const PLEDGE_COUNT = 325
+const PLEDGE_COUNT = 330
 
 export default function Page() {
   return (
@@ -36,7 +38,7 @@ export default function Page() {
             />
           </h1>
           <p className="mt-2 text-[clamp(19px,2vw,24px)] font-medium leading-tight">
-            We already pay for it. <span className="italic font-extrabold">We should own it.</span>
+            We helped pay for it. <span className="italic font-extrabold">We should own it.</span>
           </p>
         </div>
       </section>
@@ -50,8 +52,10 @@ export default function Page() {
 
       <BankruptSection />
       <StatsSection />
-      <EventsStrip />
+      <PlanSection />
+      {/* <EventsStrip /> */}
       <TestimonialsSection />
+      <EndorsementsSection />
       <FAQSection />
       <ClosingBanner />
       <Footer />

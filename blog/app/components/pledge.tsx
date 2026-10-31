@@ -82,12 +82,11 @@ export default function Pledge({ count }: { count?: number }) {
       <div className="min-w-0">
         <h2 className="bb-h2 text-sun">Sign the pledge</h2>
         <p className="mt-6 text-[clamp(18px,1.6vw,21px)] leading-normal">
-          Tell Florida's leaders to use our tax dollars to buy Brightline and make it public — and run it for
-          the people, <span className="italic font-bold">not shareholders.</span>
+          Tell Florida's leaders to use our tax dollars to buy Brightline and make it public.
         </p>
         {count != null && (
           <p className="mt-5 inline-block rounded-full bg-sun text-deepnavy px-4 py-2 text-[15px] font-bold">
-            {count.toLocaleString('en-US')} pledges signed (and counting!)
+            {count.toLocaleString('en-US')} pledges (and counting!)
           </p>
         )}
       </div>
@@ -121,7 +120,6 @@ export default function Pledge({ count }: { count?: number }) {
           <label htmlFor="pledge-why" className={labelClass}>The State of Florida should buy Brightline because:</label>
           <textarea
             id="pledge-why"
-            required
             rows={2}
             placeholder="A public train, with cheaper rates, would make life better. I could see family more often, and skip wasting time and gas sitting in traffic"
             className={inputClass}
@@ -130,15 +128,15 @@ export default function Pledge({ count }: { count?: number }) {
         </div>
 
         <div className="sm:col-span-2 flex flex-wrap gap-x-7 gap-y-3">
-          {/* Consent 2 (FL resident or visitor) */}
+          {/* Consent 2 (FL resident or visitor) - changed to lawmaker letter */}
           <label className={checkLabelClass}>
-            <input type="checkbox" required className={checkClass}
+            <input type="checkbox" className={checkClass}
               {...submitForm.getInputProps("consent2", { type: "checkbox" })} />
-            I'm a Florida resident or frequent visitor
+            I want my lawmakers to receive a copy of my pledge
           </label>
           {/* Consent 3 (Volunteer) */}
           <label className={checkLabelClass}>
-            <input type="checkbox" required className={checkClass}
+            <input type="checkbox" className={checkClass}
               {...submitForm.getInputProps("consent3", { type: "checkbox" })} />
             I want to volunteer
           </label>
@@ -162,7 +160,7 @@ export default function Pledge({ count }: { count?: number }) {
             disabled={loading}
             className="bb-pill"
           >
-            {loading ? "Submitting..." : "Sign the pledge"}
+            {loading ? "Submitting..." : "Submit"}
           </button>
         </div>
       </form>

@@ -5,9 +5,9 @@ import { useEffect, useState } from 'react'
 
 const navItems = [
   { href: '/#pledge-form', name: 'Pledge' },
-  { href: '/#numbers', name: 'By the numbers' },
+  // { href: '/#numbers', name: 'By the numbers' },
   { href: '/events', name: 'Events' },
-  { href: '/#faq', name: 'FAQ' },
+  // { href: '/#faq', name: 'FAQ' },
 ]
 
 export function Navbar() {
@@ -40,13 +40,13 @@ export function Navbar() {
               </Link>
             ))}
           </div>
-          <Link
+          {/* <Link
             href="/#pledge-form"
             className="bb-pill bb-pill-sm"
           >
             <span className="max-[399px]:hidden">Sign the pledge</span>
             <span className="min-[400px]:hidden">Pledge</span>
-          </Link>
+          </Link> */}
           <button
             type="button"
             onClick={() => setOpen(true)}

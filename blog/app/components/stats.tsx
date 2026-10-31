@@ -2,7 +2,7 @@
 import { Starburst } from './starburst'
 
 const stats = [
-  { number: '$500', unit: 'Million', label: 'Already given to Brightline', note: 'Public dollars Floridians have already put in.' },
+  { number: '$0.5', unit: 'Billion', label: 'To support Brightline', note: 'Public dollars Floridians have already invested.' },
   { number: '$16', unit: 'Billion', label: "In Florida's reserves", note: 'Money the state is sitting on right now.' },
   { number: '$2.2', unit: 'Billion', label: 'To buy it outright', note: 'The projected cost for Florida to own Brightline.' },
 ]
@@ -20,7 +20,7 @@ export function StatsSection() {
             <div key={number} className="flex flex-col items-center text-center min-w-0">
               <div className="relative w-full max-w-[260px] aspect-square flex flex-col items-center justify-center">
                 <Starburst fill="#ffd478" className="absolute inset-0 w-full h-full" />
-                <p className="relative font-display font-black italic leading-[0.9] text-[clamp(28px,6.6vw,96px)] [text-shadow:4px_4px_0_#fff]">
+                <p className="relative font-display font-black italic leading-[0.9] text-[clamp(28px,6.6vw,96px)] [text-shadow:2px_2px_0_#fff]">
                   {number}
                 </p>
                 <p className="relative mt-1 font-extrabold text-[clamp(12px,1.6vw,22px)]">{unit}</p>

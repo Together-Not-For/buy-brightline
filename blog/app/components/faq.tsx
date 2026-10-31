@@ -6,23 +6,23 @@ import { useState } from 'react';
 const faqs = [
   {
     q: 'Why is Brightline going bankrupt?',
-    a: 'Brightline is carrying roughly $5 billion in debt from construction costs and has struggled to reach profitability. In May 2026, the company disclosed "substantial doubt" about its ability to continue as a going concern — the same language Spirit Airlines used before it collapsed.',
+    a: 'Brightline is carrying around $7 billion in debt because "operating results lagged behind original projections." High construction costs and lower-than-project ridership has made it difficult for Brightline to reach profitability. In May 2026, the company disclosed "substantial doubt" about its ability to continue as a going concern — the same language Spirit Airlines used before it collapsed.',
   },
   {
     q: 'How would Florida buy Brightline?',
-    a: 'Florida currently holds over $16 billion in budget reserves. A fraction of that could retire Brightline\'s debt and transfer ownership to a public authority — similar to how states and cities own commuter rail systems like MARC, Caltrain, and Brightline\'s predecessor, Tri-Rail.',
+    a: "Florida currently holds over $16 billion in budget reserves. A fraction of that could retire Brightline\'s debt and transfer ownership to a public authority — similar to how states and cities own commuter rail systems like MARC, Caltrain, and South Florida's Tri-Rail.",
   },
-  {
-    q: 'What happens if we do nothing?',
-    a: 'Brightline enters bankruptcy, gets sold off to another private operator or liquidated entirely. Floridians lose their only intercity passenger rail service, and the infrastructure built with public subsidies ends up in private hands at a discount.',
-  },
+  // {
+  //   q: 'What happens if we do nothing?',
+  //   a: 'Brightline enters bankruptcy, gets sold off to another private operator or liquidated entirely. Floridians lose their only intercity passenger rail service, and the infrastructure built with public subsidies ends up in private hands at a discount.',
+  // },
   {
     q: 'Who runs Buy Brightline?',
-    a: 'Buy Brightline is a grassroots campaign organized by Floridians who want mass public transit! We are not affiliated with the actual Brightline company. You can contact our lead organizer, Shelby Green, at shelby@shelbytlh.com',
+    a: 'Buy Brightline is a grassroots campaign organized by Floridians who want mass public transit! We are not affiliated with the actual Brightline company. You can contact us at hello@buybrightline.com',
   },
   {
     q: 'What does signing the pledge actually do?',
-    a: 'Your name will appear alongside hundreds of Floridians when we present the pledge to Florida lawmakers like Senate President Albritton and House President Perez, who control how our tax dollars are spent. The more signers we have, the stronger our case that Floridians want public ownership, not another bankruptcy.',
+    a: 'Your name will appear alongside hundreds of Floridians when we present the pledge to Florida lawmakers like Senate President Jim Boyd and House Speaker Sam Garrison, who control how our tax dollars are spent. The more signers we have, the stronger our case that Floridians want public ownership of Brightline.',
   },
 ]
 

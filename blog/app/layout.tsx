@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: "Let's Buy Brightline",
   description: "Brightline is going bankrupt. Let's buy it and run it the right way. Sign the pledge.",
-  keywords: ["Brightline", "Florida", "public transit", "railroad", "pledge", "petition", "grassroots", "campaign"],
+  keywords: ["Brightline", "Florida", "Brightline bankruptcy", "public transit", "railroad", "pledge", "petition", "grassroots", "campaign", "Buy Brightline"],
   
   openGraph: {
     title: "Let's Buy Brightline",
