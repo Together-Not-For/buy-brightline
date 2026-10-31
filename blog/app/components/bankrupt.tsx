@@ -16,16 +16,16 @@ export function BankruptSection() {
         </div>
         <div className="min-w-0">
           <h2 className="bb-h2 text-flameink">
-            Brightline is bankrupt.
+            Brightline is facing bankrupcy.
           </h2>
-          <p className="mt-8 text-[clamp(18px,1.6vw,21px)] leading-relaxed">
-            Florida should buy it outright and run it for <u>the people</u>,{' '}
-            <span className="italic font-bold">not shareholders.</span>
+          <p className="mt-5 text-[clamp(18px,1.6vw,21px)] leading-relaxed">
+            It carries more than 3 million riders a year between Miami and Orlando, but billions in high-interest private debt forced its holding company into bankruptcy. Brightline's future should be decided by Floridians, not its creditors.
           </p>
           <p className="mt-5 text-[clamp(18px,1.6vw,21px)] leading-relaxed">
-            A public inter-city train will reduce traffic, improve accessibility, and give us more transportation
-            options. The State of Florida buying Brightline will benefit the millions of working Floridians who
-            already fund the system with their taxes.
+            Buying Brightline could spark a statewide rail system that one day runs from Pensacola to the Keys. This is a rare chance to solve a problem every Floridian faces and build something that serves the Sunshine State for generations.
+          </p>
+          <p className="mt-8 text-[clamp(18px,1.6vw,21px)] leading-relaxed">
+            Florida should buy Brightline and run it for <u>Floridians</u>, not shareholders. We deserve affordable, accessible ways to travel move through our state.
           </p>
         </div>
       </div>

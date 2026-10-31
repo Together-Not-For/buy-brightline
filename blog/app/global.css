@@ -78,6 +78,13 @@
   opacity: 0.6;
   cursor: not-allowed;
 }
+.bb-pill-ghost {
+  background: transparent;
+  box-shadow: inset 0 0 0 3px #0c2342;
+}
+.bb-pill-ghost:hover {
+  background: #fff;
+}
 .bb-pill-sm {
   min-height: 44px;
   padding: 10px 20px;
@@ -85,6 +92,78 @@
 }
 .bb-r {
   border-radius: 28px;
+}
+/* Our plan: a rail line with three stops (horizontal on wide screens, vertical on phones) */
+.bb-line {
+  list-style: none;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  position: relative;
+}
+.bb-line::before {
+  content: '';
+  position: absolute;
+  left: 16.667%;
+  right: 16.667%;
+  top: 34px;
+  height: 10px;
+  border-radius: 5px;
+  background: #fa8238;
+}
+.bb-stop {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 22px;
+  min-width: 0;
+}
+.bb-dot {
+  flex: none;
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  background: #fff;
+  border: 9px solid #0c2342;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 900;
+  font-size: 28px;
+  color: #0c2342;
+}
+.bb-stop-blurb {
+  max-width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (max-width: 720px) {
+  .bb-line {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 36px;
+  }
+  .bb-line::before {
+    left: 34px;
+    right: auto;
+    width: 10px;
+    height: auto;
+    top: 39px;
+    bottom: 39px;
+  }
+  .bb-stop {
+    flex-direction: row;
+    text-align: left;
+  }
+  .bb-stop-blurb {
+    margin-left: 0;
+  }
 }
 @media (max-width: 420px) {
   .bb-pill-sm {

@@ -11,7 +11,7 @@ export function AnnouncementBanner() {
       <p className="text-white text-sm sm:text-base text-center">
         Join us on Wednesdays for our campaign call!{" "}
         <a href="/events" className="font-bold text-sun underline underline-offset-2 hover:opacity-80">
-          RSVP here →
+          RSVP
         </a>
       </p>
       <button
