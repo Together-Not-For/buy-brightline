@@ -16,7 +16,7 @@ interface FormValues {
 }
 
 const inputClass =
-  "w-full min-h-[52px] rounded-[4px] border-0 bg-white px-3.5 py-3 text-[17px] text-deepnavy placeholder-slate/60 resize-y focus:outline focus:outline-[3px] focus:outline-[#fa8238] focus:outline-offset-2";
+  "w-full min-h-[52px] rounded-xl border-0 bg-white px-3.5 py-3 text-[17px] text-deepnavy placeholder-slate/60 resize-y focus:outline focus:outline-[3px] focus:outline-[#fa8238] focus:outline-offset-2";
 const labelClass = "block text-[15px] font-bold mb-2";
 const checkClass = "mt-px w-[22px] h-[22px] flex-none accent-flame";
 const checkLabelClass = "flex items-start gap-2.5 text-base leading-snug cursor-pointer";
@@ -80,8 +80,8 @@ export default function Pledge({ count }: { count?: number }) {
   return (
     <div className="grid grid-cols-1 min-[860px]:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] gap-x-16 gap-y-10 items-start">
       <div className="min-w-0">
-        <h2 className="font-display font-black uppercase leading-[0.95] text-sun text-[clamp(40px,5vw,64px)]">Sign the pledge</h2>
-        <p className="mt-5 text-[19px] leading-normal">
+        <h2 className="bb-h2 text-sun">Sign the pledge</h2>
+        <p className="mt-6 text-[clamp(18px,1.6vw,21px)] leading-normal">
           Tell Florida's leaders to use our tax dollars to buy Brightline and make it public — and run it for
           the people, <span className="italic font-bold">not shareholders.</span>
         </p>
@@ -160,7 +160,7 @@ export default function Pledge({ count }: { count?: number }) {
           <button
             type="submit"
             disabled={loading}
-            className="min-h-[56px] rounded-[4px] bg-flame px-10 py-4 font-display text-xl font-black uppercase tracking-wide text-deepnavy transition-colors hover:bg-sun disabled:opacity-60 disabled:cursor-not-allowed"
+            className="bb-pill"
           >
             {loading ? "Submitting..." : "Sign the pledge"}
           </button>

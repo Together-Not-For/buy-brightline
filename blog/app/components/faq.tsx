@@ -30,13 +30,13 @@ export function FAQSection() {
   const [open, setOpen] = useState<number | null>(null)
 
   return (
-    <section id="faq" className="bg-cream py-24 px-4 text-deepnavy scroll-mt-20">
-      <div className="max-w-[860px] mx-auto">
-        <h2 className="font-display text-[clamp(40px,5vw,60px)] font-black uppercase leading-none">
+    <section id="faq" className="bb-sec bg-cream text-deepnavy scroll-mt-20">
+      <div className="bb-wrap max-w-[900px]">
+        <h2 className="bb-h2 text-flameink">
           Questions
         </h2>
 
-        <div className="mt-8 border-t-[3px] border-deepnavy">
+        <div className="mt-[clamp(32px,4vw,48px)] border-t-[3px] border-deepnavy">
           {faqs.map((faq, i) => (
             <div key={i} className="border-b-[3px] border-deepnavy">
               <button

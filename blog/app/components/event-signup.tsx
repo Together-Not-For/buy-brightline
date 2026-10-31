@@ -173,7 +173,7 @@ export default function EventSignup() {
       <button
         type="submit"
         disabled={status === 'loading'}
-        className="w-full min-h-[60px] rounded-[14px] border-[3px] border-deepnavy bg-flame px-5 py-4 font-display text-xl font-black uppercase tracking-wide text-deepnavy shadow-[6px_6px_0_#0c2342] transition hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[8px_8px_0_#0c2342] disabled:opacity-50 disabled:cursor-not-allowed"
+        className="bb-pill w-full"
       >
         {status === 'loading'
           ? 'Signing up…'
