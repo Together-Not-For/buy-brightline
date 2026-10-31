@@ -1,31 +1,34 @@
-// components/stats.tsx
+// components/stats.tsx — "By the numbers". Three across at every width; sizes scale with the viewport.
+import { Starburst } from './starburst'
+
+const stats = [
+  { number: '$500', unit: 'Million', label: 'Already given to Brightline', note: 'Public dollars Floridians have already put in.' },
+  { number: '$16', unit: 'Billion', label: "In Florida's reserves", note: 'Money the state is sitting on right now.' },
+  { number: '$2.2', unit: 'Billion', label: 'To buy it outright', note: 'The projected cost for Florida to own Brightline.' },
+]
 
 export function StatsSection() {
-  const stats = [
-    { number: "4M+", label: "Annual Brightline riders" },
-    { number: "$16B", label: "Florida's reserve fund, sitting idle" },
-    { number: "3", label: "Cities connected — so far" },
-    { number: "1", label: "Shot to make it ours" },
-  ]
-
   return (
-    <section className="bg-deepnavy text-white py-16 px-8">
-      <div className="max-w-5xl mx-auto">
-        <h2 className="font-display text-4xl font-black text-center mb-4">
-          You Are Not Riding Alone.
+    <section id="numbers" className="bg-deepnavy text-deepnavy px-3 py-[clamp(72px,8vw,112px)] scroll-mt-20">
+      <div className="max-w-[1200px] mx-auto">
+        <h2 className="text-center font-display font-black uppercase text-sun text-[clamp(40px,6vw,84px)] leading-none tracking-[-0.01em]">
+          By the numbers
         </h2>
-        <p className="text-center text-lg text-gray-300 mb-12 max-w-2xl mx-auto">
-          Millions of Floridians depend on Brightline. The numbers make the case for us.
-        </p>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-          {stats.map(({ number, label }) => (
-            <div key={number} className="border-t-4 border-coolyellow pt-6">
-              <div className="font-display text-5xl font-black text-coolyellow mb-2">
-                {number}
+
+        <div className="mt-[clamp(36px,7vw,96px)] grid grid-cols-3 gap-[clamp(10px,3.5vw,48px)]">
+          {stats.map(({ number, unit, label, note }) => (
+            <div key={number} className="flex flex-col items-center text-center min-w-0">
+              <div className="relative w-full max-w-[260px] aspect-square flex flex-col items-center justify-center">
+                <Starburst fill="#ffd478" className="absolute inset-0 w-full h-full" />
+                <p className="relative font-display font-black italic leading-[0.9] text-[clamp(28px,6.6vw,96px)] [text-shadow:4px_4px_0_#fff]">
+                  {number}
+                </p>
+                <p className="relative mt-1 font-extrabold text-[clamp(12px,1.6vw,22px)]">{unit}</p>
               </div>
-              <div className="text-sm font-bold uppercase tracking-widest text-gray-300">
+              <p className="mt-[clamp(16px,2.8vw,40px)] font-display font-black uppercase text-flame leading-[1.1] text-[clamp(14px,1.9vw,26px)]">
                 {label}
-              </div>
+              </p>
+              <p className="mt-2 max-w-[300px] text-[#e6eaf0] leading-snug text-[clamp(13px,1.2vw,17px)]">{note}</p>
             </div>
           ))}
         </div>

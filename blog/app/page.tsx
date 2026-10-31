@@ -1,71 +1,56 @@
+import Image from 'next/image'
 import { Navbar } from './components/nav'
 import Pledge from './components/pledge'
 import { AnnouncementBanner } from './components/announcements'
+import { BankruptSection } from './components/bankrupt'
+import { StatsSection } from './components/stats'
 import { TestimonialsSection } from './components/testimonials'
 import { FAQSection } from './components/faq'
 import { Footer } from './components/footer'
 
+const PLEDGE_COUNT = 325
+
 export default function Page() {
   return (
-    <div className="flex flex-col min-h-screen">
-      <Navbar />
+    <div className="flex flex-col min-h-screen overflow-x-clip">
       <AnnouncementBanner />
+      <Navbar />
 
-      <div className="flex flex-col lg:flex-row flex-1">
-
-        {/* Left: bold colored panel */}
-        <section className="lg:w-[620px] flex-shrink-0 bg-coolyellow text-deepnavy px-10 pt-16 pb-16 flex flex-col justify-between">
-          <div>
-            <h1 className="font-display text-6xl lg:text-7xl font-black uppercase leading-none mb-10 text-deepnavy">
-              Let's Buy Brightline!
-            </h1>
-            <p className="text-xl font-bold leading-snug text-deepnavy mb-6">
-              Millions of us rely on Brightline to travel up and down the state
-              stress-free. But a $5 billion debt could wipe Brightline out.
-              We've already watched Spirit collapse. We don't have to let
-              Florida's only intercity railroad go out the same way.</p>
-            <p className="text-lg leading-relaxed text-deepnavy mb-4">
-              Brightline is headed toward bankruptcy. But Florida is sitting on $16 billion
-              in reserves — enough to buy it outright and run it for the people, not shareholders.
-            </p>
-            <p className="text-lg leading-relaxed text-deepnavy mb-8">
-              We need to show Florida's leaders that riders are paying attention.
-            </p>
-            <p className="text-xl font-bold text-deepnavy">
-              Sign the pledge and join our movement. 🚆
-            </p>
-          </div>
-        </section>
-
-        {/* Right: counter + form */}
-        <div className="flex-1 flex flex-col">
-
-          {/* Pledge counter bar */}
-          <div className="bg-white border-b border-gray-200 px-10 py-5 flex items-center justify-between">
-            <p className="text-2xl font-black text-deepnavy">
-              <span className="bg-deepnavy text-coolyellow px-2 py-1 mr-1">325</span>
-              {' '}pledges signed
-              <span className="text-gray-400 font-normal text-lg ml-1">(and counting!)</span>
-            </p>
-          </div>
-
-          {/* Form */}
-          <div className="flex-1 bg-gray-50 px-10 py-10">
-            <Pledge />
-          </div>
-          
+      {/* Compact hero on the halftone background */}
+      <section id="pledge" className="bb-halftone px-4 pt-2 pb-5 text-deepnavy">
+        <div className="max-w-[1100px] mx-auto text-center flex flex-col items-center">
+          <h1 className="m-0 w-full">
+            <span className="block font-display font-black text-[clamp(26px,3.4vw,42px)] leading-tight -rotate-[4deg] [text-shadow:3px_3px_0_#fff]">
+              Brightline is going bankrupt.
+            </span>
+            {/* Lockup from the palm card: "Florida needs to BUY BRIGHTLINE" with the train on the starburst */}
+            <Image
+              src="/hero-lockup.webp"
+              alt="Florida needs to buy Brightline"
+              width={1426}
+              height={798}
+              priority
+              className="block mx-auto mt-2 w-full max-w-[640px] h-auto"
+            />
+          </h1>
+          <p className="mt-2 text-[clamp(19px,2vw,24px)] font-medium leading-tight">
+            We already pay for it. <span className="italic font-extrabold">We should own it.</span>
+          </p>
         </div>
-      </div>
+      </section>
 
+      {/* Pledge form on a navy band */}
+      <section id="pledge-form" className="bg-deepnavy text-white px-4 py-[clamp(56px,7vw,88px)] scroll-mt-20">
+        <div className="max-w-[1200px] mx-auto">
+          <Pledge count={PLEDGE_COUNT} />
+        </div>
+      </section>
 
-      {/* Testimonials */}
-      <TestimonialsSection/>
-
-      {/* FAQ */}
-      <FAQSection/>
-
-    {/* Footer */}
-    <Footer />
+      <BankruptSection />
+      <StatsSection />
+      <TestimonialsSection />
+      <FAQSection />
+      <Footer />
     </div>
   )
 }

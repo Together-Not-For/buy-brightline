@@ -15,12 +15,18 @@ interface FormValues {
   improvement: string;
 }
 
-export default function Pledge() {
+const inputClass =
+  "w-full min-h-[52px] rounded-[4px] border-0 bg-white px-3.5 py-3 text-[17px] text-deepnavy placeholder-slate/60 resize-y focus:outline focus:outline-[3px] focus:outline-[#fa8238] focus:outline-offset-2";
+const labelClass = "block text-[15px] font-bold mb-2";
+const checkClass = "mt-px w-[22px] h-[22px] flex-none accent-flame";
+const checkLabelClass = "flex items-start gap-2.5 text-base leading-snug cursor-pointer";
+
+export default function Pledge({ count }: { count?: number }) {
   // set state of pledge form
   const [submitted, setSubmitted] = useState(false)
   // fix to stop multiple submissions
   const [loading, setLoading] = useState(false)
-  
+
   // set initial values of the pledge attributes
   const submitForm = useForm<FormValues>({
     initialValues: {
@@ -58,145 +64,107 @@ export default function Pledge() {
 
   // if pledge successfully sent
   if (submitted) {
+    return (
+      <div className="text-center py-6" role="status">
+        <p className="font-script text-6xl leading-none text-sun">Thank you!</p>
+        <h2 className="mt-4 font-display font-black text-4xl">You signed the pledge.</h2>
+        <p className="mt-3 mx-auto max-w-lg text-lg leading-relaxed">
+          Now help us show Florida's leaders that riders are organized: share the pledge and follow{" "}
+          <a href="https://instagram.com/buybrightline" className="font-bold text-white">@buybrightline</a>.
+        </p>
+      </div>
+    )
+  }
+
+  // otherwise: heading column on the left, fields on the right (stacks under 860px)
   return (
-    <div className="text-deepnavy">
-      <h2 className="text-xl font-bold mb-4">Thank you for signing!</h2>
-      <p className="text-lg leading-relaxed">We'll keep you updated on the campaign to make Brightline public.</p>
-    </div>
-  )
-}
-
-  // otherwise
-  return (
-    <div className="text-deepnavy">
-      <h2 className="text-xl font-bold mb-6 text-deepernavy">Brightline is going bankrupt. Let's buy it, and run it the right way. </h2>
-      <h3 className="text-l font-bold mb-6 text-deepernavy">Sign the pledge to tell our Florida leaders to use our tax dollars to buy Brightline and make it public.</h3>
-
-      <form onSubmit={submitForm.onSubmit((values) => handleSubmit(values))}>
-
-        {/* Name */}
-        <div className="mb-6">
-          <label className="block text-xs font-bold uppercase tracking-widest mb-2">
-            Full Name <span className="text-red-500">*</span>
-          </label>
-          <input
-            required
-            placeholder="e.g. Marcy Daniels"
-            className="w-full border-2 border-deepnavy px-4 py-4 text-base placeholder-gray-400 focus:outline-none"
-            {...submitForm.getInputProps("name")}
-          />
-        </div>
-
-        {/* Email */}
-        <div className="mb-6">
-          <label className="block text-xs font-bold uppercase tracking-widest mb-2">
-            Email Address <span className="text-red-500">*</span>
-          </label>
-          <input
-            required
-            placeholder="you@example.com"
-            className="w-full border-2 border-deepnavy px-4 py-4 text-base placeholder-gray-400 focus:outline-none"
-            {...submitForm.getInputProps("email")}
-          />
-          <p className="text-xs text-gray-500 mt-2">
-            We won't spam. This is just to keep you in the loop!
+    <div className="grid grid-cols-1 min-[860px]:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] gap-x-16 gap-y-10 items-start">
+      <div className="min-w-0">
+        <h2 className="font-display font-black uppercase leading-[0.95] text-sun text-[clamp(40px,5vw,64px)]">Sign the pledge</h2>
+        <p className="mt-5 text-[19px] leading-normal">
+          Tell Florida's leaders to use our tax dollars to buy Brightline and make it public — and run it for
+          the people, <span className="italic font-bold">not shareholders.</span>
+        </p>
+        {count != null && (
+          <p className="mt-5 inline-block rounded-full bg-sun text-deepnavy px-4 py-2 text-[15px] font-bold">
+            {count.toLocaleString('en-US')} pledges signed (and counting!)
           </p>
+        )}
+      </div>
+
+      <form
+        onSubmit={submitForm.onSubmit((values) => handleSubmit(values))}
+        className="min-w-0 grid grid-cols-1 sm:grid-cols-2 gap-5"
+      >
+        <div>
+          <label htmlFor="pledge-name" className={labelClass}>Name</label>
+          <input id="pledge-name" required autoComplete="name" className={inputClass}
+            {...submitForm.getInputProps("name")} />
+        </div>
+        <div>
+          <label htmlFor="pledge-email" className={labelClass}>Email</label>
+          <input id="pledge-email" required type="email" autoComplete="email" className={inputClass}
+            {...submitForm.getInputProps("email")} />
+        </div>
+        <div>
+          <label htmlFor="pledge-phone" className={labelClass}>Mobile number</label>
+          <input id="pledge-phone" required type="tel" autoComplete="tel" className={inputClass}
+            {...submitForm.getInputProps("phone")} />
+        </div>
+        <div>
+          <label htmlFor="pledge-zip" className={labelClass}>Zip code</label>
+          <input id="pledge-zip" required inputMode="numeric" autoComplete="postal-code" className={inputClass}
+            {...submitForm.getInputProps("zip")} />
         </div>
 
-        {/* Phone */}
-        <div className="mb-6">
-          <label className="block text-xs font-bold uppercase tracking-widest mb-2">
-            Phone Number <span className="text-red-500">*</span>
-          </label>
-          <input
+        <div className="sm:col-span-2">
+          <label htmlFor="pledge-why" className={labelClass}>The State of Florida should buy Brightline because:</label>
+          <textarea
+            id="pledge-why"
             required
-            placeholder="850-488-7146"
-            className="w-full border-2 border-deepnavy px-4 py-4 text-base placeholder-gray-400 focus:outline-none"
-            {...submitForm.getInputProps("phone")}
-          />
-          <p className="text-xs text-gray-500 mt-2">
-            We won't spam. This is just to keep you in the loop!
-          </p>
-        </div>
-
-        {/* Zip */}
-        <div className="mb-8">
-          <label className="block text-xs font-bold uppercase tracking-widest mb-2">
-            Zip Code <span className="text-red-500">*</span>
-          </label>
-          <input
-            required
-            placeholder="e.g. 33101"
-            className="w-full border-2 border-deepnavy px-4 py-4 text-base placeholder-gray-400 focus:outline-none"
-            {...submitForm.getInputProps("zip")}
-          />
-        </div>
-
-        {/* Improvement */}
-        <div className="mb-8">
-          <label className="block text-xs font-bold uppercase tracking-widest mb-2">
-            The State of Florida should buy Brightline because: <span className="text-red-500">*</span>
-          </label>
-          <input
+            rows={2}
             placeholder="A public train, with cheaper rates, would make life better. I could see family more often, and skip wasting time and gas sitting in traffic"
-            className="w-full border-2 border-deepnavy px-4 py-4 text-base placeholder-gray-400 focus:outline-none"
+            className={inputClass}
             {...submitForm.getInputProps("improvement")}
           />
         </div>
 
-        {/* Consent 2 (FL resident or visitor) */}
-        <div className="mb-2 flex items-start gap-3">
-          <input
-            type="checkbox"
-            required
-            className="mt-1 border-2 border-black accent-brand"
-            {...submitForm.getInputProps("consent2", { type: "checkbox" })}
-          />
-          <label className="text-sm font-bold leading-relaxed">
-            I am a Florida resident or frequent visitor.
+        <div className="sm:col-span-2 flex flex-wrap gap-x-7 gap-y-3">
+          {/* Consent 2 (FL resident or visitor) */}
+          <label className={checkLabelClass}>
+            <input type="checkbox" required className={checkClass}
+              {...submitForm.getInputProps("consent2", { type: "checkbox" })} />
+            I'm a Florida resident or frequent visitor
           </label>
-        </div>
-
-        {/* Consent 3 (Volunteer) */}
-        <div className="mb-2 flex items-start gap-3">
-          <input
-            type="checkbox"
-            required
-            className="mt-1 border-2 border-black accent-brand"
-            {...submitForm.getInputProps("consent3", { type: "checkbox" })}
-          />
-          <label className="text-sm font-bold leading-relaxed">
-            I want to volunteer!
+          {/* Consent 3 (Volunteer) */}
+          <label className={checkLabelClass}>
+            <input type="checkbox" required className={checkClass}
+              {...submitForm.getInputProps("consent3", { type: "checkbox" })} />
+            I want to volunteer
           </label>
-        </div>
-
-        {/* Consent 1 (Messages) */}
-        <div className="mb-2 flex items-start gap-3">
-          <input
-            type="checkbox"
-            required
-            className="mt-1 border-2 border-black accent-brand"
-            {...submitForm.getInputProps("consent1", { type: "checkbox" })}
-          />
-          <label className="text-sm font-bold leading-relaxed">
-            I agree to opt-in to text messages from the Buy Brightline campaign.
+          {/* Consent 1 (Messages) */}
+          <label className={checkLabelClass}>
+            <input type="checkbox" required className={checkClass}
+              {...submitForm.getInputProps("consent1", { type: "checkbox" })} />
+            I agree to opt-in to text messages from the Buy Brightline campaign
           </label>
         </div>
 
         {/* SMS disclaimer */}
-        <p className="text-xs text-gray-500 leading-relaxed mb-8">
-          By providing your phone number and checking the box above, you consent to receive recurring SMS/MMS messages from the Buy Brightline campaign, including updates, alerts, and calls to action. Message and data rates may apply. Message frequency may vary. Text STOP to opt out at any time. Text HELP for help. Your information will not be rented, sold, or shared.{' '}
-          <a href="/privacy-policy" className="underline decoration-dotted">Privacy Policy</a>. <a href="/sms-terms" className="underline decoration-dotted">Terms and conditions</a>.
+        <p className="sm:col-span-2 text-[13px] leading-relaxed text-white/75">
+          We won't spam. By providing your phone number and checking the box above, you consent to receive recurring SMS/MMS messages from the Buy Brightline campaign, including updates, alerts, and calls to action. Message and data rates may apply. Message frequency may vary. Text STOP to opt out at any time. Text HELP for help. Your information will not be rented, sold, or shared.{' '}
+          <a href="/privacy-policy" className="underline text-white">Privacy Policy</a>. <a href="/sms-terms" className="underline text-white">Terms and conditions</a>.
         </p>
 
-        {/* Submit */}
-        <button
-          type="submit"
-          disabled={loading}
-          className="w-full bg-[#0a2342] text-white text-sm font-bold uppercase tracking-widest py-4 hover:bg-gray-800 transition-colors mb-8 disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          {loading ? "Submitting..." : "Submit"}
-        </button>
+        <div className="sm:col-span-2">
+          <button
+            type="submit"
+            disabled={loading}
+            className="min-h-[56px] rounded-[4px] bg-flame px-10 py-4 font-display text-xl font-black uppercase tracking-wide text-deepnavy transition-colors hover:bg-sun disabled:opacity-60 disabled:cursor-not-allowed"
+          >
+            {loading ? "Submitting..." : "Sign the pledge"}
+          </button>
+        </div>
       </form>
     </div>
   );

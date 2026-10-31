@@ -38,7 +38,7 @@ export const upcomingEvents: UpcomingEvent[] = [
     time: '7:00pm',
     location: 'Zoom',
     description:
-      "Join us for our weekly campaign call, where we share updates, brainstorm, and work through certain items. ALl are welcome to join! No experience needed.",
+      "Join us for our weekly campaign call, where we share updates, brainstorm, and work through certain items. All are welcome to join! No experience needed.",
   },
   {
     id: 'weekly-2026-11-06',
@@ -48,6 +48,6 @@ export const upcomingEvents: UpcomingEvent[] = [
     time: '7:00pm',
     location: 'Old Amtrak Station - 941 Railroad Ave Tallahassee, FL 32310',
     description:
-      "We're tabling during First Friday to get more pledges. Join us! No experienced needed.",
+      "We're tabling during First Friday to get more pledges. Join us! No experience needed.",
   },
 ];

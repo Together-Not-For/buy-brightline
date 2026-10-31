@@ -1,7 +1,7 @@
 import './global.css'
 import Pledge from './components/pledge'
 import type { Metadata } from 'next'
-import { DM_Serif_Display, DM_Sans, Barlow_Condensed } from 'next/font/google'
+import { Fraunces, Yellowtail } from 'next/font/google'
 import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
 import { Navbar } from './components/nav'
@@ -48,21 +48,17 @@ export const metadata: Metadata = {
 
 const cx = (...classes) => classes.filter(Boolean).join(' ')
 
-const dmSerif = DM_Serif_Display({
+// Palm-card type: Fraunces stands in for Roca One, Yellowtail for Nordminne Script.
+const fraunces = Fraunces({
+  subsets: ['latin'],
+  style: ['normal', 'italic'],
+  variable: '--font-display',
+})
+
+const yellowtail = Yellowtail({
   subsets: ['latin'],
   weight: '400',
-  variable: '--font-serif',
-})
-
-const dmSans = DM_Sans({
-  subsets: ['latin'],
-  variable: '--font-sans',
-})
-
-const barlowCondensed = Barlow_Condensed({
-  subsets: ['latin'],
-  weight: ['700', '800', '900'],
-  variable: '--font-display',
+  variable: '--font-script',
 })
 
 export default function RootLayout({
@@ -77,10 +73,11 @@ export default function RootLayout({
         'text-deepernavy',
         GeistMono.variable,
         GeistSans.variable,
-        barlowCondensed.variable
+        fraunces.variable,
+        yellowtail.variable
       )}
     >
-      <body className="antialiased">
+      <body className="antialiased font-display bg-white">
         <Providers>
           <main>
             {children}

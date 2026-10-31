@@ -50,11 +50,11 @@ export default function EventSignup() {
   if (status === 'done') {
     return (
       <div className="text-deepnavy" role="status">
-        <h2 className="font-display text-4xl leading-tight mb-4">You’re in!</h2>
+        <p className="font-script text-6xl leading-none text-flameink mb-4">You’re in!</p>
         <p className="text-lg mb-4">You’re signed up for:</p>
         <ul className="space-y-3 mb-6">
           {chosen.map((e) => (
-            <li key={e.id} className="rounded-xl border-2 border-deepnavy bg-coolyellow/40 p-4">
+            <li key={e.id} className="rounded-xl border-2 border-deepnavy bg-[#fffdf6] p-4">
               <span className="block font-bold">{e.title}</span>
               <span className="block text-sm">
                 {e.dayLabel}, {e.time} on {e.location}
@@ -69,12 +69,12 @@ export default function EventSignup() {
 
   return (
     <form onSubmit={handleSubmit} className="text-deepnavy">
-      <h2 className="font-display text-4xl leading-tight mb-6">Join us!</h2>
+      <h2 className="font-script font-normal text-[clamp(48px,5vw,64px)] leading-none -rotate-3 mb-7">Join us!</h2>
 
       {/* Event picker */}
       <fieldset className="mb-8">
         <div className="flex items-baseline justify-between mb-3">
-          <legend className="font-bold">Choose your events</legend>
+          <legend className="font-extrabold text-[17px]">Choose your events</legend>
           <button
             type="button"
             onClick={() => {
@@ -93,7 +93,7 @@ export default function EventSignup() {
               <label
                 key={e.id}
                 className={`flex items-start gap-4 rounded-xl border-2 p-4 cursor-pointer transition-colors has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-coral ${
-                  on ? 'border-deepnavy bg-coolyellow/40' : 'border-deepnavy/20 hover:border-deepnavy/50'
+                  on ? 'border-deepnavy bg-[#fffdf6]' : 'border-deepnavy/30 hover:border-deepnavy/60'
                 }`}
               >
                 <input
@@ -103,7 +103,7 @@ export default function EventSignup() {
                   className="mt-1 h-5 w-5 shrink-0 accent-deepnavy"
                 />
                 <span>
-                  <span className="block font-bold">{e.title}</span>
+                  <span className="block font-extrabold">{e.title}</span>
                   <span className="block text-sm">
                     {e.shortDate}, {e.time}
                   </span>
@@ -118,24 +118,24 @@ export default function EventSignup() {
       {/* Contact fields */}
       <div className="space-y-5 mb-6">
         <label className="block">
-          <span className="block font-bold mb-1.5">Name *</span>
+          <span className="block text-[15px] font-bold mb-1.5">Name</span>
           <input
             required
             autoComplete="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full rounded-lg border-2 border-deepnavy/20 px-4 py-3 focus:border-deepnavy focus:outline-none"
+            className="w-full min-h-[52px] rounded-[10px] border-2 border-deepnavy bg-[#fffdf6] px-3.5 py-3 text-[17px] focus:outline focus:outline-[3px] focus:outline-[#fa8238] focus:outline-offset-2"
           />
         </label>
         <label className="block">
-          <span className="block font-bold mb-1.5">Email *</span>
+          <span className="block text-[15px] font-bold mb-1.5">Email</span>
           <input
             required
-            type="ema"
-            autoComplete="ema"
+            type="email"
+            autoComplete="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full rounded-lg border-2 border-deepnavy/20 px-4 py-3 focus:border-deepnavy focus:outline-none"
+            className="w-full min-h-[52px] rounded-[10px] border-2 border-deepnavy bg-[#fffdf6] px-3.5 py-3 text-[17px] focus:outline focus:outline-[3px] focus:outline-[#fa8238] focus:outline-offset-2"
           />
           <span className="block text-sm opacity-70 mt-1.5">
             We won’t spam. This is just to keep you in the loop!
@@ -173,12 +173,12 @@ export default function EventSignup() {
       <button
         type="submit"
         disabled={status === 'loading'}
-        className="w-full bg-deepnavy text-white text-sm font-bold uppercase tracking-widest py-4 hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
+        className="w-full min-h-[60px] rounded-[14px] border-[3px] border-deepnavy bg-flame px-5 py-4 font-display text-xl font-black uppercase tracking-wide text-deepnavy shadow-[6px_6px_0_#0c2342] transition hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[8px_8px_0_#0c2342] disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {status === 'loading'
           ? 'Signing up…'
           : allSelected
-            ? 'Sign up for both'
+            ? 'Sign up for all'
             : selected.length === 1
               ? `Sign up for ${chosen[0].shortDate}`
               : 'Sign up'}

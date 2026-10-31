@@ -7,17 +7,16 @@ export function AnnouncementBanner() {
   if (!visible) return null
 
   return (
-    <div className="w-full bg-white px-8 py-3 flex items-center justify-center relative sticky border-b-2 border-deepernavy">
-      <p className="text-deepnavy text-sm font-semibold text-center">
+    <div className="w-full bg-deepnavy px-12 py-2.5 flex items-center justify-center relative">
+      <p className="text-white text-sm sm:text-base text-center">
         Join us on Wednesdays for our campaign call!{" "}
-        <a href="/events" className="underline underline-offset-2 hover:opacity-70 transition-opacity">
-          RSVP here
+        <a href="/events" className="font-bold text-sun underline underline-offset-2 hover:opacity-80">
+          RSVP here →
         </a>
-        .
       </p>
       <button
         onClick={() => setVisible(false)}
-        className="absolute right-4 text-deepernavy hover:opacity-60 transition-opacity text-xl font-bold"
+        className="absolute right-2 w-11 h-11 flex items-center justify-center text-white/80 hover:text-white text-xl font-bold"
         aria-label="Dismiss banner"
       >
         ×

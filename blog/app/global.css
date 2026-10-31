@@ -3,13 +3,33 @@
 @theme {
   --color-brand: #fff7d9;
   --color-brandtext: #363534;
-  --color-deepnavy: #0a2342;
-  --color-coolyellow: #fef3c7;
-  --color-deepernavy: #111827;
+  --color-deepnavy: #0c2342;
+  --color-coolyellow: #fdd57f;
+  --color-deepernavy: #0c2342;
   --color-coral: #db432b;
-  --font-serif: var(--font-serif);
-  --font-sans: var(--font-sans);
-  --font-display: var(--font-display);
+
+  /* Palm-card palette */
+  --color-sun: #ffd478;
+  --color-sand: #fdd57f;
+  --color-flame: #fa8238;
+  --color-flameink: #c9520f; /* orange that passes contrast on white */
+  --color-slate: #3f4e60;
+  --color-cream: #fff6e6;
+
+  /* Tailwind v4 alpha namespace is --font-family-*; next/font sets --font-display / --font-script on <html> */
+  --font-family-display: var(--font-display), Georgia, serif;
+  --font-family-script: var(--font-script), cursive;
+}
+
+.bb-halftone {
+  background-color: #fdd57f;
+  background-image: linear-gradient(rgba(253, 213, 127, 0.55), rgba(253, 213, 127, 0.55)), url('/halftone.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.bb-lift {
+  text-shadow: 5px 5px 0 #fff;
 }
 
 ::selection {
@@ -63,8 +83,11 @@ html {
   @apply underline transition-all decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em];
 }
 
-.prose a, section a, p a {
-  text-decoration: underline;
+/* In the base layer so utilities like `no-underline` on button-style links can override it */
+@layer base {
+  .prose a, section a, p a {
+    text-decoration: underline;
+  }
 }
 
 .prose .anchor:after {

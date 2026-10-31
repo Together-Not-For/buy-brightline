@@ -37,46 +37,39 @@ export function TestimonialsSection() {
   const t = testimonials[index]
 
   return (
-    <section className="bg-deepnavy py-16 px-8">
+    <section className="bg-sand py-24 px-4 text-deepnavy" aria-roledescription="carousel" aria-label="Why we want to buy Brightline">
       <div className="max-w-4xl mx-auto">
-
-        {/* Section label */}
-        <h2 className="font-display text-4xl font-black text-white mb-10 leading-tight">
-          Why we want to buy Brightline:
+        <h2 className="text-center font-script font-normal text-[clamp(44px,6vw,64px)] leading-none -rotate-3">
+          Why we want to buy Brightline
         </h2>
 
-        {/* Card + arrows */}
-        <div className="flex items-center gap-4">
-          <button onClick={prev} className="flex-shrink-0 w-10 h-10 rounded-full border-2 border-white/40 text-white flex items-center justify-center hover:border-white transition-colors">
+        <figure className="mt-12 bg-white border-[3px] border-deepnavy rounded-[22px] shadow-[10px_10px_0_#0c2342] p-8 sm:p-12 min-h-[280px] flex flex-col justify-between">
+          <blockquote className="font-display italic font-semibold text-[clamp(20px,2.4vw,28px)] leading-snug">
+            “{t.quote}”
+          </blockquote>
+          <figcaption className="mt-8 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+            <span className="font-black uppercase text-xl">{t.name}</span>
+            <span className="font-script text-2xl text-flameink">{t.descriptor}</span>
+            <span className="text-sm text-slate">Name may have been changed.</span>
+          </figcaption>
+        </figure>
+
+        <div className="mt-8 flex items-center justify-center gap-4">
+          <button onClick={prev} aria-label="Previous story" className="w-12 h-12 rounded-full border-2 border-deepnavy bg-white font-bold text-xl hover:bg-deepnavy hover:text-white transition-colors">
             ←
           </button>
-          <div className="flex-1 bg-coolyellow text-deepnavy p-8 lg:p-10">
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-14 h-14 rounded-full bg-deepnavy flex items-center justify-center text-2xl flex-shrink-0">
-                {t.emoji}
-              </div>
-              <div>
-                <div className="font-display text-xl font-black uppercase">{t.name}</div>
-                <div className="text-xs font-bold uppercase tracking-widest text-deepnavy/60">{t.descriptor}</div>
-              </div>
-            </div>
-            <p className="text-lg leading-relaxed mb-4">"{t.quote}"</p>
-            <p className="text-xs italic text-deepnavy/50">Name may have been changed.</p>
+          <div className="flex gap-1">
+            {testimonials.map((_, i) => (
+              <button key={i} onClick={() => setIndex(i)} aria-label={`Story ${i + 1}`} aria-current={i === index}
+                className="w-11 h-11 flex items-center justify-center">
+                <span className={`block w-3 h-3 rounded-full border-2 border-deepnavy ${i === index ? 'bg-deepnavy' : 'bg-transparent'}`} />
+              </button>
+            ))}
           </div>
-          <button onClick={next} className="flex-shrink-0 w-10 h-10 rounded-full border-2 border-white/40 text-white flex items-center justify-center hover:border-white transition-colors">
+          <button onClick={next} aria-label="Next story" className="w-12 h-12 rounded-full border-2 border-deepnavy bg-white font-bold text-xl hover:bg-deepnavy hover:text-white transition-colors">
             →
           </button>
         </div>
-
-        {/* Dots */}
-        <div className="flex justify-center gap-2 mt-6">
-          {testimonials.map((_, i) => (
-            <button key={i} onClick={() => setIndex(i)}
-              className={`w-2 h-2 rounded-full transition-colors ${i === index ? 'bg-coolyellow' : 'bg-white/20'}`}
-            />
-          ))}
-        </div>
-
       </div>
     </section>
   )

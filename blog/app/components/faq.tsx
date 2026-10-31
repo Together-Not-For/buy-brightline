@@ -30,26 +30,27 @@ export function FAQSection() {
   const [open, setOpen] = useState<number | null>(null)
 
   return (
-    <section className="bg-coolyellow py-16 px-8">
-      <div className="max-w-3xl mx-auto">
-        <h2 className="font-display text-4xl font-black text-deepnavy mb-10 leading-tight">
-          FAQ:
+    <section id="faq" className="bg-cream py-24 px-4 text-deepnavy scroll-mt-20">
+      <div className="max-w-[860px] mx-auto">
+        <h2 className="font-display text-[clamp(40px,5vw,60px)] font-black uppercase leading-none">
+          Questions
         </h2>
 
-        <div className="divide-y-2 divide-deepnavy/10 border-t-2 border-b-2 border-deepnavy/10">
+        <div className="mt-8 border-t-[3px] border-deepnavy">
           {faqs.map((faq, i) => (
-            <div key={i}>
+            <div key={i} className="border-b-[3px] border-deepnavy">
               <button
                 onClick={() => setOpen(open === i ? null : i)}
-                className="w-full flex items-center justify-between py-5 text-left gap-4"
+                aria-expanded={open === i}
+                className="w-full flex items-center justify-between py-6 text-left gap-4 min-h-[44px]"
               >
-                <span className="font-bold text-lg text-deepnavy">{faq.q}</span>
-                <span className={`flex-shrink-0 w-8 h-8 rounded-full border-2 border-deepnavy flex items-center justify-center text-deepnavy font-bold transition-transform ${open === i ? 'rotate-45' : ''}`}>
+                <span className="font-extrabold text-[22px] leading-snug">{faq.q}</span>
+                <span aria-hidden="true" className={`flex-none w-10 h-10 rounded-full bg-sun flex items-center justify-center text-[28px] font-bold transition-transform ${open === i ? 'rotate-45' : ''}`}>
                   +
                 </span>
               </button>
               {open === i && (
-                <div className="pb-6 text-base leading-relaxed text-deepnavy/80">
+                <div className="pb-6 text-lg leading-relaxed">
                   {faq.a}
                 </div>
               )}
