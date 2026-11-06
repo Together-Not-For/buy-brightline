@@ -52,7 +52,7 @@ import { upcomingEvents } from './events'
 
 export const metadata = {
   title: "Events | Let's Buy Brightline",
-  description: 'Sign up for upcoming Buy Brightline campaign meetings and calls.',
+  description: 'Sign up for upcoming campaign events.',
 }
 
 function ClockIcon() {
