@@ -7,6 +7,7 @@ const navItems = [
   { href: '/#pledge-form', name: 'Pledge' },
   // { href: '/#numbers', name: 'By the numbers' },
   { href: '/events', name: 'Events' },
+  { href: '/jobs', name: 'Jobs' },
   // { href: '/#faq', name: 'FAQ' },
 ]
 

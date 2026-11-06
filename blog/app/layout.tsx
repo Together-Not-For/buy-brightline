@@ -14,8 +14,8 @@ import { Providers } from './components/providers'
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: "Let's Buy Brightline",
-  description: "Brightline is going bankrupt. Let's buy it and run it the right way. Sign the pledge.",
-  keywords: ["Brightline", "Florida", "Brightline bankruptcy", "public transit", "railroad", "pledge", "petition", "grassroots", "campaign", "Buy Brightline"],
+  description: "Brightline is going bankrupt. Florida should buy it, and make it public. Like it was meant to be. Sign the pledge!",
+  keywords: ["Brightline", "Florida", "Brightline bankruptcy", "public transit", "railroad", "pledge", "petition", "grassroots", "campaign", "Buy Brightline", "Florida public transit", "Florida trains", "Brightline baddies"],
   
   openGraph: {
     title: "Let's Buy Brightline",
@@ -26,12 +26,20 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: "https://buybrightline.com/new-header.jpg", // 1200x630px works best
+        url: "https://buybrightline.com/new-header.png", // 1200x630px works best
         width: 1200,
         height: 630,
         alt: "Let's Buy Brightline",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/new-header.png"],
+  },
+  icons: {
+    icon: "/new-logo.png",
+    apple: "/new-logo.png",
   },
   robots: {
     index: true,
