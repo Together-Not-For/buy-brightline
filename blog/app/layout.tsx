@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: "https://buybrightline.com/og-image.jpg", // 1200x630px works best
+        url: "https://buybrightline.com/new-header.jpg", // 1200x630px works best
         width: 1200,
         height: 630,
         alt: "Let's Buy Brightline",
