@@ -117,7 +117,7 @@ export default function Pledge({ count }: { count?: number }) {
         </div>
 
         <div className="sm:col-span-2">
-          <label htmlFor="pledge-why" className={labelClass}>The State of Florida should buy Brightline because:</label>
+          <label htmlFor="pledge-why" className={labelClass}>Tell your state lawmakers why you want the State of Florida to buy Brightline:</label>
           <textarea
             id="pledge-why"
             rows={2}
