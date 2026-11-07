@@ -46,7 +46,7 @@ export const upcomingEvents: UpcomingEvent[] = [
     dayLabel: 'Friday, November 6',
     shortDate: 'Fri, Nov 6',
     time: '7:00pm',
-    location: 'Old Amtrak Station - 941 Railroad Ave Tallahassee, FL 32310',
+    location: '621 Gallery - 650-3 Railroad Sq, Tallahassee, FL 32310',
     description:
       "We're tabling during First Friday to get more pledges. Join us! No experience needed.",
   },
