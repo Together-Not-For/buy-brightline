@@ -142,7 +142,7 @@ export default function Pledge({ count }: { count?: number }) {
           </label>
           {/* Consent 1 (Messages) */}
           <label className={checkLabelClass}>
-            <input type="checkbox" required className={checkClass}
+            <input type="checkbox" className={checkClass}
               {...submitForm.getInputProps("consent1", { type: "checkbox" })} />
             I agree to opt-in to text messages from the Buy Brightline campaign
           </label>
