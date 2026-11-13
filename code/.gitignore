@@ -1,6 +1,6 @@
 .ipynb_checkpoints
 .venv
 fetch-district-per-pledge.ipynb
+fetch-leg-districts-from-zip.ipynb
 fl_legislators_filled.csv
 fl_legislators.csv
-fetch-leg-districts-from-zip.ipynb
