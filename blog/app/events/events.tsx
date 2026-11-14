@@ -12,17 +12,6 @@ export type UpcomingEvent = {
 // Listed in date order. Edit these, and the left column and sign-up card both update.
 export const upcomingEvents: UpcomingEvent[] = [
   {
-    id: 'weekly-2026-11-11',
-    title: 'Weekly Campaign Call',
-    dayLabel: 'Wednesday, November 11',
-    shortDate: 'Wed, Nov 11',
-    date: '2026-11-11',
-    time: '7:00pm',
-    location: 'Zoom',
-    description:
-      "Want to get involved on the campaign? Join us for our weekly campaign call, where we share updates, brainstorm, and work through certain items. All are welcome to join! No experience needed.",
-  },
-  {
     id: 'weekly-2026-11-14',
     title: 'Canvassing',
     dayLabel: 'Saturday, November 14',
@@ -32,6 +21,17 @@ export const upcomingEvents: UpcomingEvent[] = [
     location: 'Miami',
     description:
       "We're knocking on doors to get more pledges and spread the word about our campaign! No experience needed.",
+  },
+    {
+    id: 'weekly-2026-11-18',
+    title: 'Weekly Campaign Call',
+    dayLabel: 'Wednesday, November 18',
+    shortDate: 'Wed, Nov 18',
+    date: '2026-11-18',
+    time: '7:00pm',
+    location: 'Zoom',
+    description:
+      "Want to get involved on the campaign? Join us for our weekly campaign call, where we share updates, brainstorm, and work through certain items. All are welcome to join! No experience needed.",
   },
   {
     id: 'weekly-2026-12-04',

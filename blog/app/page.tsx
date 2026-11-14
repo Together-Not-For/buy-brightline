@@ -12,7 +12,7 @@ import { TestimonialsSection } from './components/testimonials'
 import { FAQSection } from './components/faq'
 import { Footer } from './components/footer'
 
-const PLEDGE_COUNT = 472
+const PLEDGE_COUNT = 484
 
 export default function Page() {
   return (
