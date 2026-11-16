@@ -128,9 +128,9 @@ export default function Jobs() {
             {...submitForm.getInputProps("role")}
           >
             <option value="">Which role are you applying for?</option>
-            <option value="Social Media Fellow">Campaign Manager</option>
-            <option value="Social Media Fellow">Communications Intern</option>
-            <option value="Social Media Fellow">Policy and Research Intern</option>
+            <option value="Campaign Manager">Campaign Manager</option>
+            <option value="Communications Intern">Communications Intern</option>
+            <option value="Policy and Research Intern">Policy and Research Intern</option>
           </select>
         </div>
 

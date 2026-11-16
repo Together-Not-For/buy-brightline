@@ -28,7 +28,7 @@ export default function JobsPage() {
           Join our team
         </h1>
         <p className="mt-7 mx-auto max-w-[620px] text-[clamp(18px,2vw,22px)] leading-normal">
-          We're looking for interns and a campaign manager to help grow this campaign!
+          We're looking for a campaign manager and interns to help grow this movement!
         </p>
       </section>
 

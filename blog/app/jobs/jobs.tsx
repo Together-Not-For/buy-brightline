@@ -17,7 +17,7 @@ export const jobListings: Job[] = [
     id: 'intern-newsletter',
     title: 'Communications Intern',
     url: '/pdfs/communications-intern.pdf',
-    description: "Like to write and tell stories that move people? Apply!",
+    description: "Like to write and tell moving stories? Apply!",
   },
   {
     id: 'intern',
