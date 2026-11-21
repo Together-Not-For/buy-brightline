@@ -12,6 +12,7 @@ interface FormValues {
   consent1: boolean;
   consent2: boolean;
   consent3: boolean;
+  letterReady: boolean;
   improvement: string;
 }
 
@@ -37,6 +38,7 @@ export default function Pledge({ count }: { count?: number }) {
       consent1: false,
       consent2: false,
       consent3: false,
+      letterReady: true,
       improvement: ""
     },
   });
@@ -54,7 +56,7 @@ export default function Pledge({ count }: { count?: number }) {
 
       if (result.data == "ok") {
         setSubmitted(true);
-        submitForm.setValues({ name: "", email: "", zip: "", phone: "", consent1: false, consent2: false, consent3: false, improvement: "" });
+        submitForm.setValues({ name: "", email: "", zip: "", phone: "", consent1: false, consent2: false, consent3: false, letterReady: true, improvement: "" });
       }
 
     } finally {
