@@ -11,10 +11,14 @@ import { ClosingBanner } from './components/closing-banner'
 import { TestimonialsSection } from './components/testimonials'
 import { FAQSection } from './components/faq'
 import { Footer } from './components/footer'
+import { getPledgeCount } from './lib/pledge-count'
 
-const PLEDGE_COUNT = 712
+// Rebuild the page at most once an hour so the pledge count stays fresh without hitting Airtable on every visit.
+export const revalidate = 3600
 
-export default function Page() {
+export default async function Page() {
+  const pledgeCount = await getPledgeCount()
+
   return (
     <div className="flex flex-col min-h-screen overflow-x-clip">
       <AnnouncementBanner />
@@ -46,7 +50,7 @@ export default function Page() {
       {/* Pledge form on a navy band */}
       <section id="pledge-form" className="bb-sec bg-deepnavy text-white scroll-mt-20">
         <div className="bb-wrap">
-          <Pledge count={PLEDGE_COUNT} />
+          <Pledge count={pledgeCount} />
         </div>
       </section>
 

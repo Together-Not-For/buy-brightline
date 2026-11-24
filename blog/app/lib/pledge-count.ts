@@ -1,25 +1,29 @@
-import { NextResponse } from 'next/server'
+// Shown if Airtable can't be reached, so the page never breaks.
+const FALLBACK_PLEDGE_COUNT = 712
 
-export async function GET() {
+// Airtable is queried at most once per hour; every visitor in between gets the cached count.
+const REVALIDATE_SECONDS = 60 * 60
+
+export async function getPledgeCount(): Promise<number> {
   try {
     const baseId = process.env.AIRTABLE_BASE_ID
     const tableName = process.env.AIRTABLE_TABLE_NAME
-    const apiKey = process.env.AIRTABLE_API_KEY
+    const token = process.env.AIRTABLE_TOKEN
 
-    // Airtable paginates at 100 records per page, so we count via the
-    // list endpoint, fetching just record IDs to keep payload small.
+    // Airtable has no count endpoint and paginates at 100 records per page,
+    // so we page through the list endpoint fetching a single field.
     let count = 0
     let offset: string | undefined = undefined
 
     do {
       const url = new URL(`https://api.airtable.com/v0/${baseId}/${tableName}`)
       url.searchParams.set('pageSize', '100')
-      url.searchParams.set('fields[]', 'Name') // any single field to minimize payload
+      url.searchParams.set('fields[]', 'Name')
       if (offset) url.searchParams.set('offset', offset)
 
       const res = await fetch(url.toString(), {
-        headers: { Authorization: `Bearer ${apiKey}` },
-        cache: 'no-store',
+        headers: { Authorization: `Bearer ${token}` },
+        next: { revalidate: REVALIDATE_SECONDS, tags: ['pledge-count'] },
       })
 
       if (!res.ok) {
@@ -29,13 +33,11 @@ export async function GET() {
       const data = await res.json()
       count += data.records.length
       offset = data.offset
-
     } while (offset)
 
-    return NextResponse.json({ count })
-
+    return count
   } catch (err) {
     console.error('Failed to fetch pledge count:', err)
-    return NextResponse.json({ count: null, error: 'Failed to fetch count' }, { status: 500 })
+    return FALLBACK_PLEDGE_COUNT
   }
 }
