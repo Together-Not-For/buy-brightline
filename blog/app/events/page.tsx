@@ -47,33 +47,20 @@
 import { Navbar } from '../components/nav'
 import { AnnouncementBanner } from '../components/announcements'
 import { Footer } from '../components/footer'
-import EventSignup from '../components/event-signup'
-import { upcomingEvents } from './events'
+import EventsBoard from '../components/event-board'
+import { getUpcomingEvents } from './events'
+
+// Rebuild the page with fresh Airtable data at most every 5 minutes
+export const revalidate = 300
 
 export const metadata = {
   title: "Events | Let's Buy Brightline",
   description: 'Sign up for upcoming campaign events.',
 }
 
-function ClockIcon() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c9520f" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <circle cx="12" cy="12" r="9" />
-      <path d="M12 7v5l3 2" />
-    </svg>
-  )
-}
+export default async function EventsPage() {
+  const upcomingEvents = await getUpcomingEvents()
 
-function PinIcon() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c9520f" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z" />
-      <circle cx="12" cy="9.5" r="2.5" />
-    </svg>
-  )
-}
-
-export default function EventsPage() {
   return (
     <div className="flex flex-col min-h-screen overflow-x-clip text-deepnavy">
       <AnnouncementBanner />
@@ -90,43 +77,8 @@ export default function EventsPage() {
         </p>
       </section>
 
-      {/* Events + sign-up */}
-      <section id="events" className="bb-sec bg-cream">
-        <div className="bb-wrap grid grid-cols-1 min-[900px]:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] gap-12 items-start">
-          <div className="flex flex-col gap-7 min-w-0">
-            {upcomingEvents.map((e) => {
-              const [dow, rest] = e.shortDate.split(', ')
-              const [month, day] = rest.split(' ')
-              return (
-                <article
-                  key={e.id}
-                  className="bb-r flex items-start gap-[clamp(16px,3vw,28px)] bg-white border-[3px] border-deepnavy shadow-[8px_8px_0_#0c2342] p-[clamp(20px,3vw,32px)]"
-                >
-                  <div aria-hidden="true" className="flex-none w-[clamp(72px,9vw,96px)] aspect-square rounded-2xl bg-deepnavy text-white flex flex-col items-center justify-center text-center">
-                    <span className="text-[13px] font-extrabold uppercase tracking-[0.08em] text-sun">{dow}</span>
-                    <span className="font-display font-black text-[clamp(30px,4vw,40px)] leading-none">{day}</span>
-                    <span className="text-[13px] font-bold uppercase tracking-[0.06em]">{month}</span>
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <h2 className="font-display font-black uppercase text-[clamp(24px,2.6vw,32px)] leading-[1.05]">{e.title}</h2>
-                    <div className="mt-3 flex flex-wrap gap-x-5 gap-y-1.5 text-base font-semibold">
-                      <span className="inline-flex items-center gap-2"><ClockIcon />{e.dayLabel} · {e.time}</span>
-                      <span className="inline-flex items-center gap-2"><PinIcon />{e.location}</span>
-                    </div>
-                    <p className="mt-3.5 text-lg leading-relaxed">{e.description}</p>
-                  </div>
-                </article>
-              )
-            })}
-          </div>
-
-          <aside id="signup" className="min-w-0 min-[900px]:sticky min-[900px]:top-24 scroll-mt-24">
-            <div className="bb-r bg-white border-[3px] border-deepnavy shadow-[10px_10px_0_#0c2342] p-[clamp(24px,3.5vw,40px)]">
-              <EventSignup />
-            </div>
-          </aside>
-        </div>
-      </section>
+      {/* Events, sign-up form and mobile sign-up bar */}
+      <EventsBoard events={upcomingEvents} />
 
       <Footer />
     </div>
