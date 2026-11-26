@@ -1,15 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { upcomingEvents } from '../../events/events'
+import { getUpcomingEvents } from '../../events/events'
 
 export async function POST(req: NextRequest) {
   try {
     const { name, email, consent, events } = await req.json()
 
-    // Only accept event ids that actually exist on the page
+    // Only accept event ids that actually exist in Airtable right now
+    const upcomingEvents = await getUpcomingEvents()
     const chosen = upcomingEvents.filter((e) => Array.isArray(events) && events.includes(e.id))
-    if (!name?.trim() || !email?.trim() || chosen.length === 0) {
-      return NextResponse.json({ data: 'error', detail: 'missing fields' }, { status: 400 })
-    }
 
     const response = await fetch(
       `https://api.airtable.com/v0/${process.env.AIRTABLE_BASE_ID}/${encodeURIComponent(
