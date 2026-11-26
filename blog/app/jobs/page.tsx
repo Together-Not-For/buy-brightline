@@ -5,11 +5,11 @@ import type { Metadata } from "next";
 import { jobListings } from './jobs'
 
 export const metadata: Metadata = {
-  title: "We're Hiring! | Buy Brightline",
-  description: "We're hiring two fellows to help us grow Buy Brightline's online presence.",
+  title: "We're Growing! | Buy Brightline",
+  description: "Help us grow by joining the campaign.",
   openGraph: {
-    title: "We're Hiring! | Buy Brightline",
-    description: "We're hiring two fellows to help us grow Buy Brightline's online presence.",
+    title: "We're Growing! | Buy Brightline",
+    description: "Help us grow by joining the campaign.",
     url: "https://www.buybrightline.com/jobs",
   },
 };
@@ -23,7 +23,7 @@ export default function JobsPage() {
 
       {/* Header band */}
       <section className="bb-halftone bb-gutter pt-[clamp(24px,4vw,48px)] pb-[clamp(48px,6vw,80px)] text-center">
-        <p className="font-script text-[clamp(36px,5vw,60px)] leading-none -rotate-[4deg]">We're Hiring!</p>
+        <p className="font-script text-[clamp(36px,5vw,60px)] leading-none -rotate-[4deg]">We're Growing!</p>
         <h1 className="mt-3 font-display font-black uppercase text-[clamp(48px,8vw,112px)] leading-[0.92] -rotate-3 [text-shadow:5px_5px_0_#fff]">
           Join our team
         </h1>
