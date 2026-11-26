@@ -1,8 +1,10 @@
 // components/events-strip.tsx — "Upcoming events" row on the landing page; swipes sideways on phones
 import Link from 'next/link'
-import { upcomingEvents } from '../events/events'
+import { getUpcomingEvents } from '../events/events'
 
-export function EventsStrip() {
+export async function EventsStrip() {
+  const upcomingEvents = await getUpcomingEvents()
+
   return (
     <section id="events" className="bb-sec bg-cream text-deepnavy scroll-mt-20">
       <div className="bb-wrap">
