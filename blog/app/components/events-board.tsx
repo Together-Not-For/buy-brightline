@@ -4,7 +4,7 @@ import { useMemo, useState } from 'react'
 import type { UpcomingEvent } from '../events/events'
 import EventSignup from './event-signup'
 
-// ---------- small pieces ----------
+// ---------- small pieces ---------- test
 
 function ClockIcon({ color = '#c9520f' }: { color?: string }) {
   return (
